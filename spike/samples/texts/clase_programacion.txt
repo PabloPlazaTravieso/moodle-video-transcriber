@@ -1,0 +1,9 @@
+Bienvenidos a la sesión número tres del curso de desarrollo web.
+Hoy vamos a crear nuestra primera API REST con JavaScript y Node punto js.
+Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP: GET para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos.
+Primero instalamos el framework Express con el comando npm install express.
+Después creamos un archivo llamado servidor punto js y definimos una ruta que responda a las peticiones GET en la dirección barra usuarios.
+La función recibe dos parámetros, la petición y la respuesta, y devuelve la lista de usuarios en formato JSON.
+Por último, el servidor escucha en el puerto tres mil. Si abrimos el navegador en localhost dos puntos tres mil barra usuarios, veremos la respuesta.
+Un error muy común es olvidar el código de estado. Recordad devolver doscientos cuando todo va bien, cuatrocientos cuatro cuando el recurso no existe y quinientos cuando falla el servidor.
+En la próxima clase conectaremos la API con una base de datos PostgreSQL.

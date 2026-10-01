@@ -1,0 +1,58 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 86.17196565400081,
+ "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con JavaScript, inode.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo bachetttp. GT para leer datos. post para crearlos. PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el Framework Express con el comando npn instad express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones gt. En la dirección barra usuarios, la función recibe dos parámetros. la petición y la respuesta. y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000. Si abrimos el navegador en Localost 2.3000 barra usuarios, Veremos la respuesta. Un error muy común es olvidar el código. Estado. Recordá. devolver doscientos cuando todo va bien. 404 cuando el recurso no existe y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos PostgreSQL.",
+ "segments": [
+  {
+   "start": 0.066,
+   "end": 17.438,
+   "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con JavaScript, inode.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo bachetttp."
+  },
+  {
+   "start": 17.602,
+   "end": 19.038,
+   "text": "GT para leer datos."
+  },
+  {
+   "start": 19.138,
+   "end": 20.286,
+   "text": "post para crearlos."
+  },
+  {
+   "start": 20.45,
+   "end": 36.638,
+   "text": "PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el Framework Express con el comando npn instad express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones gt."
+  },
+  {
+   "start": 36.77,
+   "end": 41.086,
+   "text": "En la dirección barra usuarios, la función recibe dos parámetros."
+  },
+  {
+   "start": 41.218,
+   "end": 43.39,
+   "text": "la petición y la respuesta."
+  },
+  {
+   "start": 43.49,
+   "end": 54.878,
+   "text": "y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000. Si abrimos el navegador en Localost 2.3000 barra usuarios,"
+  },
+  {
+   "start": 55.01,
+   "end": 60.702,
+   "text": "Veremos la respuesta. Un error muy común es olvidar el código. Estado. Recordá."
+  },
+  {
+   "start": 60.802,
+   "end": 63.23,
+   "text": "devolver doscientos cuando todo va bien."
+  },
+  {
+   "start": 63.362,
+   "end": 73.0964375,
+   "text": "404 cuando el recurso no existe y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos PostgreSQL."
+  }
+ ]
+}

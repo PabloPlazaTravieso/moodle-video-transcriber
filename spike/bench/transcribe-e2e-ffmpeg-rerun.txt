@@ -1,0 +1,43 @@
+Engine: ffmpeg
+A. New activity: split and transcription chained in one cron run
+  [PASS] audio separated
+  [PASS] transcribed — 10 segments, lang=es, cron 67.0s
+  [PASS] segments ordered and timed
+  [PASS] first sentence — Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar?
+  [PASS] VTT and JSON copies — tts_02_tutoria_dos_voces-transcript.json, tts_02_tutoria_dos_voces-transcript.vtt
+  [PASS] model recorded — FFmpeg whisper ggml-large-v3-turbo-q5_0.bin + VAD
+  text for the AI:
+    [00:00:00] Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar?
+    [00:00:04] Hola, profesora. Tengo dudas con el trabajo final de historia. No sé cómo elegir el tema.
+    [00:00:10] Es normal. Te recomiendo que elijas algo que te interese de verdad. ¿Qué época te gustó más
+    [00:00:15] durante el curso? La revolución industrial. Me pareció muy
+B. Save the form without changes: nothing is re-transcribed
+  [PASS] no task queued
+C. Force the separation: identical WAV, transcription skipped and status not stuck
+  [PASS] status back to done — status 3
+  [PASS] not re-transcribed
+D. "Transcribe again" forces a new transcription
+  [PASS] re-transcribed
+E. FFmpeg engine with a missing model: clear error, not retried, transcript of the same audio kept
+    task> mod_videoai: transcription of instance 31 failed: The Whisper model file /models/nope.bin does not exist or cannot be read.
+  [PASS] error recorded — The Whisper model file /models/nope.bin does not exist or cannot be read.
+  [PASS] not retried
+  [PASS] previous transcript kept
+G. Transcription disabled: separation works, nothing is sent
+  [PASS] no transcription task
+H. Silence and music: no invented text, speech after the pause keeps its real time
+  [FAIL] nothing between 6 s and 70 s — Muy bien, ya ha pasado el tiempo.
+    [00:00:00] Vamos a empezar con un pequeño ejercicio.
+    [00:00:02] Os voy a dejar un minuto para que leáis el enunciado en silencio.
+    [00:00:55] Muy bien, ya ha pasado el tiempo.
+    [00:01:12] La respuesta correcta es la opción B, porque el agua hierve a 100 grados centígrados a nivel del mar.
+I. Video without audio: transcript removed
+    task> mod_videoai: processing of instance 31 failed: The video has no audio track.
+  [PASS] separation error, transcript cleared
+J. Web service function mod_videoai_get_transcript (REST is checked from outside by bench/ws_rest.sh)
+  [PASS] returns the transcript — 19 segments
+  [PASS] students cannot read it by default — nopermissions
+K. Delete an activity
+  [PASS] segments deleted — had 4
+
+1 FAILED

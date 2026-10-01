@@ -1,0 +1,63 @@
+{
+    "file": "tts_04_clase_programacion_mx",
+    "audio_seconds": 73.096438,
+    "seconds": 64.70170712471008,
+    "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con java script y node.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP, GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el frecuencia. framework express con el comando npm instad express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra usuarios, la función recibe dos parámetros, la petición y la respuesta, y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000. Si abrimos el navegador en localhost 2.3 mil barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien, 404 cuando el recurso no existe, y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos postgreSQL.",
+    "segments": [
+        {
+            "start": 0,
+            "end": 3.42,
+            "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web."
+        },
+        {
+            "start": 3.64,
+            "end": 8.68,
+            "text": "Hoy vamos a crear nuestra primera API REST con java script y node.js."
+        },
+        {
+            "start": 9.1,
+            "end": 13.26,
+            "text": "Una API es una interfaz que permite que dos aplicaciones se comuniquen."
+        },
+        {
+            "start": 13.52,
+            "end": 16.8,
+            "text": "En una API REST usamos los métodos del protocolo HTTP,"
+        },
+        {
+            "start": 17.62,
+            "end": 23.4,
+            "text": "GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos."
+        },
+        {
+            "start": 23.66,
+            "end": 24.96,
+            "text": "Primero instalamos el frecuencia."
+        },
+        {
+            "start": 24.96,
+            "end": 30.96,
+            "text": "framework express con el comando npm instad express. Después creamos un archivo llamado"
+        },
+        {
+            "start": 30.96,
+            "end": 37.92,
+            "text": "servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra"
+        },
+        {
+            "start": 37.92,
+            "end": 44.1,
+            "text": "usuarios, la función recibe dos parámetros, la petición y la respuesta, y devuelve la"
+        },
+        {
+            "start": 44.1,
+            "end": 49.92,
+            "text": "lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000."
+        },
+        {
+            "start": 49.92,
+            "end": 72.68,
+            "text": "Si abrimos el navegador en localhost 2.3 mil barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien, 404 cuando el recurso no existe, y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos postgreSQL."
+        }
+    ]
+}

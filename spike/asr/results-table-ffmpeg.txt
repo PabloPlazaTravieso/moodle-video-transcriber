@@ -1,0 +1,122 @@
+| Librería / modelo | WER sintéticos | WER voz real | WER ruido | WER técnico (MX) | Palabras inventadas en silencio/música | RTF | Carga (s) | RAM pico (MB) | Tiempos |
+|---|---|---|---|---|---|---|---|---|---|
+| whisperx-turbo | 1.7% | 6.3% | 0.4% | 4.4% | 0 | 0.582 | 29 | 4372 | sí |
+| faster-whisper-turbo-lotes | 2.1% | 7.4% | 0.4% | 4.9% | 0 | 0.425 | 6 | 3661 | sí |
+| ffmpeg-whisper-q25-plugin | 3.3% | 7.1% | 2.8% | 6.6% | 0 | 0.960 | 0 | 753 | sí |
+| canary-1b-v2 | 2.9% | 8.4% | 1.6% | 8.2% | 0 | 0.828 | 10 | 3306 | sí |
+| parakeet-tdt-0.6b-v3 | 2.6% | 10.2% | 0.4% | 8.2% | 0 | 0.353 | 13 | 2330 | sí |
+| faster-whisper-turbo | 3.9% | 7.3% | 0.4% | 13.7% | 0 | 0.800 | 7 | 2131 | sí |
+| whisper.cpp-turbo-q5 | 4.3% | 6.8% | 0.4% | 7.1% | 5 | 2.072 | 47 | 943 | sí |
+| openai-whisper-turbo | 4.4% | 7.6% | 0.4% | 7.7% | 5 | 1.293 | 41 | 4885 | sí |
+| faster-whisper-turbo-sin-vad | 5.6% | 7.1% | 0.4% | 13.7% | 5 | 0.841 | 16 | 2108 | sí |
+| ffmpeg-whisper-q30-sin-vad | 4.5% | 10.6% | 1.2% | 6.6% | 5 | 1.153 | 0 | 826 | sí |
+| ffmpeg-whisper-q30-vad | 4.9% | 9.8% | 1.2% | 6.6% | 6 | 0.905 | 0 | 827 | sí |
+| vosk-small-es-0.42 | 11.3% | 14.4% | 10.5% | 25.8% | 1 | 0.122 | 1 | 344 | sí |
+
+## canary-1b-v2 (onnx-asr 0.12.0, nemo-canary-1b-v2 (int8) + Silero VAD)
+  real_04_wikipedia_caracas              WER   6.5%  (sub 9, del 0, ins 0)  RTF 0.857
+  real_07_wikipedia_dolores_cacuango     WER  10.4%  (sub 33, del 4, ins 92)  RTF 0.739
+  tts_01_clase_fotosintesis              WER   1.6%  (sub 3, del 0, ins 1)  RTF 1.500
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.489
+  tts_03_silencio_y_musica               WER   2.2%  (sub 1, del 0, ins 0)  RTF 0.084  gap: 0 words «Os voy a dejar un minuto para que leáis el enunciado en silencio.»
+  tts_04_clase_programacion_mx           WER   8.2%  (sub 9, del 6, ins 0)  RTF 1.179
+  tts_05_clase_fotosintesis_ruido        WER   1.6%  (sub 4, del 0, ins 0)  RTF 1.274
+
+## faster-whisper-turbo-lotes (faster-whisper 1.2.1, large-v3-turbo int8, beam 5, batched x8 (VAD))
+  real_04_wikipedia_caracas              WER   4.3%  (sub 6, del 0, ins 0)  RTF 0.536
+  real_07_wikipedia_dolores_cacuango     WER  10.5%  (sub 16, del 27, ins 88)  RTF 0.384
+  tts_01_clase_fotosintesis              WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.531
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.513
+  tts_03_silencio_y_musica               WER   4.3%  (sub 1, del 1, ins 0)  RTF 0.172  gap: 0 words «Vamos a empezar con un pequeño ejercicio. Os voy a dejar un minuto para que leáis el enunciado en silencio. Bien, ya ha pasado el tiempo. La respuesta correcta es la opción B, porque el agua hierve a »
+  tts_04_clase_programacion_mx           WER   4.9%  (sub 4, del 5, ins 0)  RTF 0.581
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.527
+
+## faster-whisper-turbo-sin-vad (faster-whisper 1.2.1, large-v3-turbo int8, beam 5, VAD off)
+  real_04_wikipedia_caracas              WER   5.8%  (sub 7, del 1, ins 0)  RTF 0.796
+  real_07_wikipedia_dolores_cacuango     WER   8.4%  (sub 13, del 2, ins 90)  RTF 0.887
+  tts_01_clase_fotosintesis              WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.862
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.706
+  tts_03_silencio_y_musica               WER  13.0%  (sub 1, del 0, ins 5)  RTF 0.361  gap: 5 words «Gracias por ver el video. | Muy bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER  13.7%  (sub 7, del 6, ins 12)  RTF 1.047
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.923
+
+## faster-whisper-turbo (faster-whisper 1.2.1, large-v3-turbo int8, beam 5, VAD on)
+  real_04_wikipedia_caracas              WER   5.8%  (sub 7, del 1, ins 0)  RTF 0.771
+  real_07_wikipedia_dolores_cacuango     WER   8.9%  (sub 17, del 2, ins 92)  RTF 0.837
+  tts_01_clase_fotosintesis              WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.869
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.743
+  tts_03_silencio_y_musica               WER   4.3%  (sub 1, del 1, ins 0)  RTF 0.179  gap: 0 words «Bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER  13.7%  (sub 7, del 6, ins 12)  RTF 1.027
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.930
+
+## ffmpeg-whisper-q25-plugin (ffmpeg version 8.1.3 Copyright (c) 2000-2026 the FFmpeg developers, large-v3-turbo q5_0, greedy, queue 25s, VAD on, vad_min_silence_duration=2)
+  real_04_wikipedia_caracas              WER   4.3%  (sub 6, del 0, ins 0)  RTF 1.077
+  real_07_wikipedia_dolores_cacuango     WER  10.0%  (sub 16, del 8, ins 100)  RTF 0.908
+  tts_01_clase_fotosintesis              WER   1.2%  (sub 3, del 0, ins 0)  RTF 1.009
+  tts_02_tutoria_dos_voces               WER   3.9%  (sub 1, del 0, ins 5)  RTF 1.109
+  tts_03_silencio_y_musica               WER   2.2%  (sub 1, del 0, ins 0)  RTF 1.090  gap: 0 words «Os voy a dejar un minuto para que leáis el enunciado en silencio. | Muy bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER   6.6%  (sub 5, del 5, ins 2)  RTF 0.885
+  tts_05_clase_fotosintesis_ruido        WER   2.8%  (sub 4, del 1, ins 2)  RTF 0.995
+
+## ffmpeg-whisper-q30-sin-vad (ffmpeg version 8.1.3 Copyright (c) 2000-2026 the FFmpeg developers, large-v3-turbo q5_0, greedy, queue 30s, VAD off)
+  real_04_wikipedia_caracas              WER   5.8%  (sub 7, del 0, ins 1)  RTF 1.048
+  real_07_wikipedia_dolores_cacuango     WER  15.4%  (sub 25, del 53, ins 113)  RTF 1.392
+  tts_01_clase_fotosintesis              WER   0.8%  (sub 2, del 0, ins 0)  RTF 0.793
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.761
+  tts_03_silencio_y_musica               WER  13.0%  (sub 1, del 0, ins 5)  RTF 0.780  gap: 5 words «Os voy a dejar un minuto para que leáis el enunciado en silencio. | Gracias por ver el video. | Muy bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER   6.6%  (sub 6, del 5, ins 1)  RTF 1.137
+  tts_05_clase_fotosintesis_ruido        WER   1.2%  (sub 2, del 1, ins 0)  RTF 0.747
+
+## ffmpeg-whisper-q30-vad (ffmpeg version 8.1.3 Copyright (c) 2000-2026 the FFmpeg developers, large-v3-turbo q5_0, greedy, queue 30s, VAD on, vad_min_silence_duration=2)
+  real_04_wikipedia_caracas              WER   5.8%  (sub 7, del 0, ins 1)  RTF 1.043
+  real_07_wikipedia_dolores_cacuango     WER  13.8%  (sub 24, del 53, ins 95)  RTF 0.858
+  tts_01_clase_fotosintesis              WER   0.8%  (sub 2, del 0, ins 0)  RTF 0.948
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.784
+  tts_03_silencio_y_musica               WER  15.2%  (sub 1, del 0, ins 6)  RTF 1.070  gap: 6 words «Os voy a dejar un minuto para que leáis el enunciado en silencio. | Gracias. | Gracias por ver el video. | Muy bien, ya ha pasado el tiempo. La respuesta correcta es la opción B, porque el agua hierve»
+  tts_04_clase_programacion_mx           WER   6.6%  (sub 6, del 5, ins 1)  RTF 1.154
+  tts_05_clase_fotosintesis_ruido        WER   1.2%  (sub 2, del 1, ins 0)  RTF 0.771
+
+## openai-whisper-turbo (openai-whisper 20250625, turbo fp32, beam 5)
+  real_04_wikipedia_caracas              WER   4.3%  (sub 6, del 0, ins 0)  RTF 1.136
+  real_07_wikipedia_dolores_cacuango     WER  10.9%  (sub 13, del 2, ins 121)  RTF 1.410
+  tts_01_clase_fotosintesis              WER   0.4%  (sub 1, del 0, ins 0)  RTF 1.477
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 1.153
+  tts_03_silencio_y_musica               WER  13.0%  (sub 1, del 0, ins 5)  RTF 0.568  gap: 5 words «Os voy a dejar un minuto para que leáis el enunciado en silencio. | Gracias por ver el video. | Muy bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER   7.7%  (sub 5, del 6, ins 3)  RTF 1.102
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 1.420
+
+## parakeet-tdt-0.6b-v3 (onnx-asr 0.12.0, nemo-parakeet-tdt-0.6b-v3 (int8) + Silero VAD)
+  real_04_wikipedia_caracas              WER   7.9%  (sub 11, del 0, ins 0)  RTF 0.318
+  real_07_wikipedia_dolores_cacuango     WER  12.4%  (sub 46, del 16, ins 92)  RTF 0.291
+  tts_01_clase_fotosintesis              WER   0.0%  (sub 0, del 0, ins 0)  RTF 0.628
+  tts_02_tutoria_dos_voces               WER   1.9%  (sub 2, del 0, ins 1)  RTF 0.290
+  tts_03_silencio_y_musica               WER   2.2%  (sub 1, del 0, ins 0)  RTF 0.063  gap: 0 words «Os voy a dejar un minuto para que leáis el enunciado en silencio.»
+  tts_04_clase_programacion_mx           WER   8.2%  (sub 11, del 4, ins 0)  RTF 0.522
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.632
+
+## vosk-small-es-0.42 (vosk 0.3.45, vosk-model-small-es-0.42)
+  real_04_wikipedia_caracas              WER   7.2%  (sub 7, del 0, ins 3)  RTF 0.099
+  real_07_wikipedia_dolores_cacuango     WER  21.6%  (sub 113, del 25, ins 131)  RTF 0.129
+  tts_01_clase_fotosintesis              WER   8.1%  (sub 14, del 2, ins 4)  RTF 0.127
+  tts_02_tutoria_dos_voces               WER   5.8%  (sub 7, del 0, ins 2)  RTF 0.143
+  tts_03_silencio_y_musica               WER   6.5%  (sub 2, del 0, ins 1)  RTF 0.089  gap: 1 words «vamos a empezar con un pequeño ejercicio os voy a dejar un minuto para que le dice el enunciado en silencio | muy bien ya ha pasado el tiempo la respuesta correcta es la opción ve porque el agua hierv»
+  tts_04_clase_programacion_mx           WER  25.8%  (sub 23, del 2, ins 22)  RTF 0.110
+  tts_05_clase_fotosintesis_ruido        WER  10.5%  (sub 21, del 3, ins 2)  RTF 0.114
+
+## whisper.cpp-turbo-q5 (whisper.cpp v1.9.4, ggml-large-v3-turbo-q5_0.bin, beam 5)
+  real_04_wikipedia_caracas              WER   5.0%  (sub 6, del 0, ins 1)  RTF 1.913
+  real_07_wikipedia_dolores_cacuango     WER   8.5%  (sub 13, del 2, ins 91)  RTF 2.166
+  tts_01_clase_fotosintesis              WER   0.4%  (sub 1, del 0, ins 0)  RTF 2.201
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 1.821
+  tts_03_silencio_y_musica               WER  13.0%  (sub 1, del 0, ins 5)  RTF 1.592  gap: 5 words «Os voy a dejar un minuto para que leáis el enunciado en silencio. | Gracias por ver el video. | Muy bien, ya ha pasado el tiempo.»
+  tts_04_clase_programacion_mx           WER   7.1%  (sub 5, del 5, ins 3)  RTF 2.073
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 2.082
+
+## whisperx-turbo (whisperx 3.8.6, large-v3-turbo int8 + wav2vec2 alignment (es))
+  real_04_wikipedia_caracas              WER   4.3%  (sub 6, del 0, ins 0)  RTF 0.627
+  real_07_wikipedia_dolores_cacuango     WER   8.4%  (sub 13, del 2, ins 89)  RTF 0.586
+  tts_01_clase_fotosintesis              WER   0.8%  (sub 2, del 0, ins 0)  RTF 0.621
+  tts_02_tutoria_dos_voces               WER   0.6%  (sub 1, del 0, ins 0)  RTF 0.630
+  tts_03_silencio_y_musica               WER   2.2%  (sub 1, del 0, ins 0)  RTF 0.315  gap: 0 words «»
+  tts_04_clase_programacion_mx           WER   4.4%  (sub 3, del 5, ins 0)  RTF 0.618
+  tts_05_clase_fotosintesis_ruido        WER   0.4%  (sub 1, del 0, ins 0)  RTF 0.671

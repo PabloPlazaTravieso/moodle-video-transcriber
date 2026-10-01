@@ -1,0 +1,63 @@
+{
+ "file": "tts_02_tutoria_dos_voces",
+ "audio_seconds": 57.306875,
+ "seconds": 40.47471941599906,
+ "text": "Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar?  Hola, profesora. Tengo dudas con el trabajo final de Historia. No sé cómo elegir el tema.  Es normal. Te recomiendo que elijas algo que te interese de verdad. ¿Qué época te gustó más durante el curso?  La revolución industrial. Me pareció muy interesante cómo cambió la vida en las ciudades.  Perfecto. Podrías centrarte en las condiciones de trabajo en las fábricas de Inglaterra durante el siglo XIX.  ¿Y cuántas páginas tiene que tener el trabajo?  Entre 10 y 15 páginas, sin contar la bibliografía. La fecha de entrega es el 20 de mayo.  ¿Puedo usar fuentes de Internet?  Sí, pero tienen que ser fiables. Usa la biblioteca digital de la universidad y cita siempre la fuente.  Muchas gracias. Le enviaré un primer índice la semana que viene.  Muy bien, Daniel. Te espero el martes a las 4 de la tarde para revisarlo.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.88,
+   "text": " Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar?"
+  },
+  {
+   "start": 4.66,
+   "end": 10.08,
+   "text": " Hola, profesora. Tengo dudas con el trabajo final de Historia. No sé cómo elegir el tema."
+  },
+  {
+   "start": 10.84,
+   "end": 16.580000000000002,
+   "text": " Es normal. Te recomiendo que elijas algo que te interese de verdad. ¿Qué época te gustó más durante el curso?"
+  },
+  {
+   "start": 17.18,
+   "end": 22.740000000000002,
+   "text": " La revolución industrial. Me pareció muy interesante cómo cambió la vida en las ciudades."
+  },
+  {
+   "start": 23.46,
+   "end": 29.44,
+   "text": " Perfecto. Podrías centrarte en las condiciones de trabajo en las fábricas de Inglaterra durante el siglo XIX."
+  },
+  {
+   "start": 30.0,
+   "end": 32.5,
+   "text": " ¿Y cuántas páginas tiene que tener el trabajo?"
+  },
+  {
+   "start": 33.26,
+   "end": 38.74,
+   "text": " Entre 10 y 15 páginas, sin contar la bibliografía. La fecha de entrega es el 20 de mayo."
+  },
+  {
+   "start": 39.4,
+   "end": 41.08,
+   "text": " ¿Puedo usar fuentes de Internet?"
+  },
+  {
+   "start": 41.78,
+   "end": 47.54,
+   "text": " Sí, pero tienen que ser fiables. Usa la biblioteca digital de la universidad y cita siempre la fuente."
+  },
+  {
+   "start": 48.28,
+   "end": 51.84,
+   "text": " Muchas gracias. Le enviaré un primer índice la semana que viene."
+  },
+  {
+   "start": 52.58,
+   "end": 56.54,
+   "text": " Muy bien, Daniel. Te espero el martes a las 4 de la tarde para revisarlo."
+  }
+ ]
+}

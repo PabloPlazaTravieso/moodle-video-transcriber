@@ -1,0 +1,49 @@
+A. Create activity with h264_aac_1min.mp4
+  [PASS] queued after save
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] processed — status=3 audio=h264_aac_1min-audio.wav videoonly=h264_aac_1min-video.mp4 duration=60.000 (cron run 12.3s)
+  [PASS] audio named after video
+  [PASS] video-only named after video
+  [PASS] duration ~60s
+B. Save the form again without changing the video
+  [PASS] not requeued — status=3 audio=h264_aac_1min-audio.wav videoonly=h264_aac_1min-video.mp4 duration=60.000
+C. Replace the video with vp9_opus_1min.webm
+  [PASS] requeued
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] processed new video — status=3 audio=vp9_opus_1min-audio.wav videoonly=vp9_opus_1min-video.webm duration=60.008
+  [PASS] old outputs replaced, not accumulated
+D. Replace the video with no_audio.mp4
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> mod_videoai: processing of instance 1 failed: The video has no audio track.
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] error recorded — status=4 audio=vp9_opus_1min-audio.wav videoonly=vp9_opus_1min-video.webm duration=60.008 msg=The video has no audio track.
+  [FAIL] no stale outputs from the previous video — status=4 audio=vp9_opus_1min-audio.wav videoonly=vp9_opus_1min-video.webm duration=60.008 msg=The video has no audio track.
+E. Back to a good video, then force reprocess twice (duplicate tasks)
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] recovered from error — status=3 audio=h264_aac_1min-audio.wav videoonly=h264_aac_1min-video.mp4 duration=60.000
+  [PASS] two tasks queued
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] forced run reprocessed — status=3 audio=h264_aac_1min-audio.wav videoonly=h264_aac_1min-video.mp4 duration=60.000
+  [PASS] no tasks left behind
+F. Permissions on the separated files
+  [PASS] student can view the activity
+  [PASS] student cannot access separated files
+  [PASS] teacher can access separated files
+G. Task queued for an activity that is then deleted
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] instance removed
+  [PASS] files removed
+  [PASS] orphan task drained
+H. HTTP: view page and pluginfile for a fresh activity
+    task> Execute adhoc task: mod_videoai\task\process_video
+    task> Adhoc task complete: mod_videoai\task\process_video
+  [PASS] accented filename processed — status=3 audio=clase 1 introducción á-audio.wav videoonly=clase 1 introducción á-video.mov duration=60.000
+
+1 FAILED

@@ -1,0 +1,113 @@
+{
+    "file": "tts_01_clase_fotosintesis",
+    "audio_seconds": 86.471125,
+    "seconds": 81.96920585632324,
+    "text": "Buenos días a todos. Hoy vamos a hablar de la fotosíntesis, uno de los procesos más importantes para la vida en la Tierra. La fotosíntesis es el proceso mediante el cual las plantas, las algas y algunas bacterias transforman la energía de la luz en energía química. Para hacerlo necesitan tres ingredientes, luz solar, agua y dióxido de carbono. El agua la absorben las raíces desde el suelo y el dióxido de carbono entra en la hoja a través de unos pequeños poros llamados estomas. Todo el proceso ocurre dentro de los clonestinos. unos órganos que contienen un pigmento verde llamado clorofila. La clorofila es la responsable de captar la luz. La fotosíntesis tiene dos fases. En la primera, llamada fase luminosa, la luz rompe las moléculas de agua y se libera oxígeno. Ese oxígeno es el que respiramos nosotros. En la segunda fase, conocida como ciclo de Calvin, la planta utiliza el dióxido de carbono para fabricar glucosa, que es su alimento. Podemos resumirlo con una ecuación sencilla: 6 moléculas de dióxido de carbono más 6 moléculas de agua con la energía de la luz producen una molécula de glucosa y 6 moléculas de oxígeno. Para el examen recordad 3 ideas clave. Primera, la fotosíntesis ocurre en los cloroplastos. Segunda, el oxígeno procede del agua, no del dióxido de carbono. Tercera, la glucosa se fabrica en el ciclo de Calvin. La próxima semana veremos la respiración celular, que es el proceso contrario. Muchas gracias por vuestra atención.",
+    "segments": [
+        {
+            "start": 0,
+            "end": 6.42,
+            "text": "Buenos días a todos. Hoy vamos a hablar de la fotosíntesis, uno de los procesos más importantes para la vida en la Tierra."
+        },
+        {
+            "start": 6.7,
+            "end": 15.32,
+            "text": "La fotosíntesis es el proceso mediante el cual las plantas, las algas y algunas bacterias transforman la energía de la luz en energía química."
+        },
+        {
+            "start": 15.52,
+            "end": 19.98,
+            "text": "Para hacerlo necesitan tres ingredientes, luz solar, agua y dióxido de carbono."
+        },
+        {
+            "start": 20.24,
+            "end": 27.82,
+            "text": "El agua la absorben las raíces desde el suelo y el dióxido de carbono entra en la hoja a través de unos pequeños poros llamados estomas."
+        },
+        {
+            "start": 27.82,
+            "end": 29.96,
+            "text": "Todo el proceso ocurre dentro de los clonestinos."
+        },
+        {
+            "start": 29.951999999999998,
+            "end": 34.452,
+            "text": "unos órganos que contienen un pigmento verde llamado clorofila."
+        },
+        {
+            "start": 34.452,
+            "end": 37.252,
+            "text": "La clorofila es la responsable de captar la luz."
+        },
+        {
+            "start": 37.252,
+            "end": 39.252,
+            "text": "La fotosíntesis tiene dos fases."
+        },
+        {
+            "start": 39.252,
+            "end": 41.252,
+            "text": "En la primera, llamada fase luminosa,"
+        },
+        {
+            "start": 41.252,
+            "end": 44.252,
+            "text": "la luz rompe las moléculas de agua y se libera oxígeno."
+        },
+        {
+            "start": 44.252,
+            "end": 47.252,
+            "text": "Ese oxígeno es el que respiramos nosotros."
+        },
+        {
+            "start": 47.252,
+            "end": 50.252,
+            "text": "En la segunda fase, conocida como ciclo de Calvin,"
+        },
+        {
+            "start": 50.252,
+            "end": 53.252,
+            "text": "la planta utiliza el dióxido de carbono para fabricar glucosa,"
+        },
+        {
+            "start": 53.252,
+            "end": 54.752,
+            "text": "que es su alimento."
+        },
+        {
+            "start": 54.752,
+            "end": 57.252,
+            "text": "Podemos resumirlo con una ecuación sencilla:"
+        },
+        {
+            "start": 57.252,
+            "end": 59.912,
+            "text": "6 moléculas de dióxido de carbono más"
+        },
+        {
+            "start": 59.904,
+            "end": 65.944,
+            "text": "6 moléculas de agua con la energía de la luz producen una molécula de glucosa y 6 moléculas"
+        },
+        {
+            "start": 65.944,
+            "end": 71.864,
+            "text": "de oxígeno. Para el examen recordad 3 ideas clave. Primera, la fotosíntesis ocurre en los"
+        },
+        {
+            "start": 71.864,
+            "end": 77.444,
+            "text": "cloroplastos. Segunda, el oxígeno procede del agua, no del dióxido de carbono. Tercera,"
+        },
+        {
+            "start": 77.824,
+            "end": 82.704,
+            "text": "la glucosa se fabrica en el ciclo de Calvin. La próxima semana veremos la respiración celular,"
+        },
+        {
+            "start": 82.704,
+            "end": 86.024,
+            "text": "que es el proceso contrario. Muchas gracias por vuestra atención."
+        }
+    ]
+}

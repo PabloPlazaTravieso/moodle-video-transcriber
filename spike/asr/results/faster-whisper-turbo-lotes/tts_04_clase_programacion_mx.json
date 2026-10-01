@@ -1,0 +1,28 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 42.50133163099963,
+ "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con JavaScript y Node.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP. GT para leer datos, POST para crearlos.  PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el framework express con el comando npm instad express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra usuarios, la función recibe dos parámetros.  la petición y la respuesta, y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000. Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien.  404 cuando el recurso no existe y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos PostgreSQL.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 20.38,
+   "text": " Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con JavaScript y Node.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP. GT para leer datos, POST para crearlos."
+  },
+  {
+   "start": 20.38,
+   "end": 41.14,
+   "text": " PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el framework express con el comando npm instad express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra usuarios, la función recibe dos parámetros."
+  },
+  {
+   "start": 41.14,
+   "end": 63.31,
+   "text": " la petición y la respuesta, y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000. Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien."
+  },
+  {
+   "start": 63.31,
+   "end": 73.1,
+   "text": " 404 cuando el recurso no existe y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos PostgreSQL."
+  }
+ ]
+}

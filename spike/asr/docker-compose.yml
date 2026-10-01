@@ -1,0 +1,26 @@
+# Transcription comparison for the mod_videoai spike. Reads the WAVs exported by bench/samples_e2e.php.
+# Build: docker compose -f asr/docker-compose.yml build ; run: sh asr/run_all.sh
+name: videoai-asr
+
+x-common: &common
+  volumes:
+    - ".:/asr"
+    - videoai-spike_samplesdata:/samples:ro
+    - asrmodels:/models
+  environment:
+    HF_HOME: /models/hf
+    ASR_THREADS: "8"
+  working_dir: /asr
+
+services:
+  faster-whisper: { <<: *common, build: { context: docker, dockerfile: faster-whisper.Dockerfile }, image: asr-faster-whisper }
+  whisper-cpp: { <<: *common, build: { context: docker, dockerfile: whisper-cpp.Dockerfile }, image: asr-whisper-cpp }
+  onnx-asr: { <<: *common, build: { context: docker, dockerfile: onnx-asr.Dockerfile }, image: asr-onnx-asr }
+  vosk: { <<: *common, build: { context: docker, dockerfile: vosk.Dockerfile }, image: asr-vosk }
+  openai-whisper: { <<: *common, build: { context: docker, dockerfile: openai-whisper.Dockerfile }, image: asr-openai-whisper }
+  whisperx: { <<: *common, build: { context: docker, dockerfile: whisperx.Dockerfile }, image: asr-whisperx }
+
+volumes:
+  asrmodels:
+  videoai-spike_samplesdata:
+    external: true

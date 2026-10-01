@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/videoai/db" VERSION="20260930" COMMENT="XMLDB file for Moodle mod/videoai"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="videoai" COMMENT="Instances of the Video AI activity">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="intro" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="status" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="0 no video, 1 queued, 2 processing, 3 done, 4 error"/>
+        <FIELD NAME="statusmessage" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Last processing error, if any"/>
+        <FIELD NAME="videohash" TYPE="char" LENGTH="40" NOTNULL="false" SEQUENCE="false" COMMENT="Content hash of the processed source video"/>
+        <FIELD NAME="duration" TYPE="number" LENGTH="10" NOTNULL="false" SEQUENCE="false" DECIMALS="3" COMMENT="Video duration in seconds"/>
+        <FIELD NAME="timeprocessed" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="transcriptstatus" TYPE="int" LENGTH="2" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="0 none, 1 queued, 2 processing, 3 done, 4 error"/>
+        <FIELD NAME="transcriptmessage" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="Last transcription error, if any"/>
+        <FIELD NAME="transcripthash" TYPE="char" LENGTH="40" NOTNULL="false" SEQUENCE="false" COMMENT="Content hash of the transcribed audio file"/>
+        <FIELD NAME="transcriptlanguage" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="transcriptmodel" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" COMMENT="Engine and model that produced the transcript"/>
+        <FIELD NAME="timetranscribed" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="course" TYPE="foreign" FIELDS="course" REFTABLE="course" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="videoai_segments" COMMENT="Timestamped transcript segments of a Video AI activity">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="videoaiid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="segmentno" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Order of the segment, from 0"/>
+        <FIELD NAME="starttime" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3" COMMENT="Seconds from the start of the video"/>
+        <FIELD NAME="endtime" TYPE="number" LENGTH="10" NOTNULL="true" SEQUENCE="false" DECIMALS="3"/>
+        <FIELD NAME="text" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="videoaiid" TYPE="foreign" FIELDS="videoaiid" REFTABLE="videoai" REFFIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="videoaiid-segmentno" UNIQUE="true" FIELDS="videoaiid, segmentno"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>

@@ -1,0 +1,11 @@
+{
+ "name": "faster-whisper-turbo-sin-vad",
+ "library": "faster-whisper 1.2.1",
+ "model": "large-v3-turbo int8, beam 5, VAD off",
+ "threads": 8,
+ "load_seconds": 15.516808931000924,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 812.8345018389973,
+ "peak_rss_mb": 2108.2890625,
+ "python": "3.12.14"
+}

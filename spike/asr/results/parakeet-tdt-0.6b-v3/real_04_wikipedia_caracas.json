@@ -1,0 +1,103 @@
+{
+ "file": "real_04_wikipedia_caracas",
+ "audio_seconds": 60.9493125,
+ "seconds": 19.382864819999668,
+ "text": "Caracas es la capital y la ciudad más poblada de Venezuela. Desde el siglo diecinueve es considerada el centro del poder político y económico de Venezuela. Se encuentra ubicada en la zona centro. norte costera del país. a doce kilómetros de la costa del mar Caribe. y se sitúa dentro de un valle montañoso. Aunque próxima a la costa. la ciudad se sitúa a casi nuevecientos metros de altitud separada del litoral central por la cordillera de la costa que a su paso for el núcleo urbano. Se constituye como el Parque Nacional Huaraira Repano o el Ávila. The autopista Caracas La Guayra. sirve como principal vía de comunicación entre la ciudad y el estado costero de la guaira. así como el aeropuerto internacional Simón Bolívar de Maiketía Y el puerto de la Guaira el segundo puerto del país.",
+ "segments": [
+  {
+   "start": 0.386,
+   "end": 5.47,
+   "text": "Caracas es la capital y la ciudad más poblada de Venezuela."
+  },
+  {
+   "start": 6.274,
+   "end": 12.094,
+   "text": "Desde el siglo diecinueve es considerada el centro del poder político y económico de Venezuela."
+  },
+  {
+   "start": 12.802,
+   "end": 15.326,
+   "text": "Se encuentra ubicada en la zona centro."
+  },
+  {
+   "start": 15.586,
+   "end": 17.214,
+   "text": "norte costera del país."
+  },
+  {
+   "start": 18.146,
+   "end": 20.734,
+   "text": "a doce kilómetros de la costa del mar Caribe."
+  },
+  {
+   "start": 21.634,
+   "end": 24.702,
+   "text": "y se sitúa dentro de un valle montañoso."
+  },
+  {
+   "start": 25.602,
+   "end": 27.166,
+   "text": "Aunque próxima a la costa."
+  },
+  {
+   "start": 27.458,
+   "end": 30.526,
+   "text": "la ciudad se sitúa a casi nuevecientos metros de altitud"
+  },
+  {
+   "start": 31.298,
+   "end": 33.182,
+   "text": "separada del litoral central"
+  },
+  {
+   "start": 33.346,
+   "end": 35.038,
+   "text": "por la cordillera de la costa"
+  },
+  {
+   "start": 35.49,
+   "end": 36.542,
+   "text": "que a su paso"
+  },
+  {
+   "start": 36.642,
+   "end": 37.886,
+   "text": "for el núcleo urbano."
+  },
+  {
+   "start": 38.178,
+   "end": 39.23,
+   "text": "Se constituye"
+  },
+  {
+   "start": 39.362,
+   "end": 43.038,
+   "text": "como el Parque Nacional Huaraira Repano o el Ávila."
+  },
+  {
+   "start": 44.674,
+   "end": 46.686,
+   "text": "The autopista Caracas La Guayra."
+  },
+  {
+   "start": 46.946,
+   "end": 52.286,
+   "text": "sirve como principal vía de comunicación entre la ciudad y el estado costero de la guaira."
+  },
+  {
+   "start": 52.93,
+   "end": 56.926,
+   "text": "así como el aeropuerto internacional Simón Bolívar de Maiketía"
+  },
+  {
+   "start": 57.506,
+   "end": 59.07,
+   "text": "Y el puerto de la Guaira"
+  },
+  {
+   "start": 59.17,
+   "end": 60.766,
+   "text": "el segundo puerto del país."
+  }
+ ]
+}

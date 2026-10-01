@@ -1,0 +1,78 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 80.54655787299998,
+ "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con Javascript y Node.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP, GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos. Primero instalamos el Framework Express con el comando NPM InstaExpress. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra usuarios, la función recibe dos parámetros, la petición y la respuesta, y devuelve la lista de usuarios en formato JSON. Por último, el servidor escucha en el puerto 3000er. Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien, 404 cuando el recurso no existe, y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos POST-3SQL.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.42,
+   "text": " Bienvenidos a la sesión número 3 del curso de desarrollo web."
+  },
+  {
+   "start": 3.64,
+   "end": 8.68,
+   "text": " Hoy vamos a crear nuestra primera API REST con Javascript y Node.js."
+  },
+  {
+   "start": 9.06,
+   "end": 13.26,
+   "text": " Una API es una interfaz que permite que dos aplicaciones se comuniquen."
+  },
+  {
+   "start": 13.52,
+   "end": 16.8,
+   "text": " En una API REST usamos los métodos del protocolo HTTP,"
+  },
+  {
+   "start": 17.64,
+   "end": 23.400000000000002,
+   "text": " GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos."
+  },
+  {
+   "start": 23.66,
+   "end": 28.54,
+   "text": " Primero instalamos el Framework Express con el comando NPM InstaExpress."
+  },
+  {
+   "start": 28.54,
+   "end": 36.3,
+   "text": " Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT."
+  },
+  {
+   "start": 36.84,
+   "end": 42.98,
+   "text": " En la dirección barra usuarios, la función recibe dos parámetros, la petición y la respuesta,"
+  },
+  {
+   "start": 43.5,
+   "end": 46.239999999999995,
+   "text": " y devuelve la lista de usuarios en formato JSON."
+  },
+  {
+   "start": 46.66,
+   "end": 49.54,
+   "text": " Por último, el servidor escucha en el puerto 3000er."
+  },
+  {
+   "start": 50.32,
+   "end": 56.14,
+   "text": " Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta."
+  },
+  {
+   "start": 56.14,
+   "end": 62.96,
+   "text": " Un error muy común es olvidar el código, estado, recordad, devolver 200 cuando todo va bien,"
+  },
+  {
+   "start": 63.42,
+   "end": 68.08,
+   "text": " 404 cuando el recurso no existe, y 500 cuando falla el servidor."
+  },
+  {
+   "start": 68.4,
+   "end": 72.82,
+   "text": " En la próxima clase conectaremos la API con una base de datos POST-3SQL."
+  }
+ ]
+}

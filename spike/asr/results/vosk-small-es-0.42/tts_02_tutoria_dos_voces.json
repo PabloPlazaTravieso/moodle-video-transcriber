@@ -1,0 +1,28 @@
+{
+ "file": "tts_02_tutoria_dos_voces",
+ "audio_seconds": 57.306875,
+ "seconds": 8.185509004000778,
+ "text": "hola daniel gracias por venir a la tutoría en qué te puedo ayudar o la profesora tengo dudas con el trabajo final de historia no sé cómo elegir el tema es normal te recomiendo que elijas algo que te interesa de verdad que época te gusto más durante el curso la revolución industrial me pareció muy interesante como cambió la vida en las ciudades perfecto podrías centrarte en las condiciones de trabajo en las fábricas de inglaterra durante el siglo diecinueve y cuantas páginas tiene que tener el trabajo entre diez y quince páginas sin contar la bibliografía la fecha de entrega es el veinte de mayo puedo usar fue antes de internet sí pero tienen que ser fiables usa la biblioteca digital de la universidad y cita siempre la fuente muchas gracias le enviaré un primer índice la semana que viene muy bien daniel te espero el martes a las cuatro de la tarde para revisarlo",
+ "segments": [
+  {
+   "start": 0.03,
+   "end": 20.16,
+   "text": "hola daniel gracias por venir a la tutoría en qué te puedo ayudar o la profesora tengo dudas con el trabajo final de historia no sé cómo elegir el tema es normal te recomiendo que elijas algo que te interesa de verdad que época te gusto más durante el curso la revolución industrial me pareció muy"
+  },
+  {
+   "start": 20.28,
+   "end": 40.258656,
+   "text": "interesante como cambió la vida en las ciudades perfecto podrías centrarte en las condiciones de trabajo en las fábricas de inglaterra durante el siglo diecinueve y cuantas páginas tiene que tener el trabajo entre diez y quince páginas sin contar la bibliografía la fecha de entrega es el veinte de mayo puedo usar fue"
+  },
+  {
+   "start": 40.32,
+   "end": 41.22,
+   "text": "antes de internet"
+  },
+  {
+   "start": 41.82,
+   "end": 56.67,
+   "text": "sí pero tienen que ser fiables usa la biblioteca digital de la universidad y cita siempre la fuente muchas gracias le enviaré un primer índice la semana que viene muy bien daniel te espero el martes a las cuatro de la tarde para revisarlo"
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+    "file": "real_04_wikipedia_caracas",
+    "audio_seconds": 60.949313,
+    "seconds": 63.87948703765869,
+    "text": "Caracas es la capital y la ciudad más poblada de Venezuela. Desde el siglo XIX es considerada el centro del poder político y económico de Venezuela. Se encuentra ubicada en la zona centro-norte-costera del país, a 12 kilómetros de la costa del Mar Caribe, y se sitúa dentro de un valle montañoso. Aunque próxima a la costa, la ciudad se sitúa a casi 900 metros de altitud, separada del litoral central por la cordillera de la costa que a su paso por el núcleo urbano se constituye como el Parque Nacional Guaraira Repano o el Ávila. La autopista Caracas-La Guaira sirve como principal vía de comunicación entre la ciudad y el estado costero de La Guaira, así como el Aeropuerto Internacional Simón Bolívar de Maiketía y el Puerto de La Guaira el segundo puerto todo el país.",
+    "segments": [
+        {
+            "start": 0,
+            "end": 8.34,
+            "text": "Caracas es la capital y la ciudad más poblada de Venezuela. Desde el siglo XIX es considerada"
+        },
+        {
+            "start": 8.34,
+            "end": 14.48,
+            "text": "el centro del poder político y económico de Venezuela. Se encuentra ubicada en la zona"
+        },
+        {
+            "start": 14.48,
+            "end": 22.86,
+            "text": "centro-norte-costera del país, a 12 kilómetros de la costa del Mar Caribe, y se sitúa dentro"
+        },
+        {
+            "start": 22.86,
+            "end": 29.96,
+            "text": "de un valle montañoso. Aunque próxima a la costa, la ciudad se sitúa a casi 900 metros de"
+        },
+        {
+            "start": 29.951999999999998,
+            "end": 37.192,
+            "text": "altitud, separada del litoral central por la cordillera de la costa que a su paso por el núcleo"
+        },
+        {
+            "start": 37.192,
+            "end": 46.092,
+            "text": "urbano se constituye como el Parque Nacional Guaraira Repano o el Ávila. La autopista Caracas-La"
+        },
+        {
+            "start": 46.092,
+            "end": 52.152,
+            "text": "Guaira sirve como principal vía de comunicación entre la ciudad y el estado costero de La Guaira,"
+        },
+        {
+            "start": 52.152,
+            "end": 59.912,
+            "text": "así como el Aeropuerto Internacional Simón Bolívar de Maiketía y el Puerto de La Guaira el segundo puerto"
+        },
+        {
+            "start": 59.904,
+            "end": 60.464,
+            "text": "todo el país."
+        }
+    ]
+}

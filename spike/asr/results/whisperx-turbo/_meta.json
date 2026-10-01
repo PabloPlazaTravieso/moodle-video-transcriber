@@ -1,0 +1,11 @@
+{
+ "name": "whisperx-turbo",
+ "library": "whisperx 3.8.6",
+ "model": "large-v3-turbo int8 + wav2vec2 alignment (es)",
+ "threads": 8,
+ "load_seconds": 29.30535193399919,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 562.7931738889984,
+ "peak_rss_mb": 4371.9453125,
+ "python": "3.12.14"
+}

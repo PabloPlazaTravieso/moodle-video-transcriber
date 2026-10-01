@@ -1,0 +1,28 @@
+{
+ "file": "tts_03_silencio_y_musica",
+ "audio_seconds": 77.3689375,
+ "seconds": 4.8482518260007055,
+ "text": "Vamos a empezar con un pequeño ejercicio. Os voy a dejar un minuto para que leáis el enunciado en silencio. Muy bien, ya ha pasado el tiempo. La respuesta correcta es la opción B. porque el agua hierbe a 100 grados centígrados a nivel del mar.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.206,
+   "text": "Vamos a empezar con un pequeño ejercicio."
+  },
+  {
+   "start": 2.37,
+   "end": 5.534,
+   "text": "Os voy a dejar un minuto para que leáis el enunciado en silencio."
+  },
+  {
+   "start": 70.626,
+   "end": 74.27,
+   "text": "Muy bien, ya ha pasado el tiempo. La respuesta correcta es la opción B."
+  },
+  {
+   "start": 74.434,
+   "end": 77.3689375,
+   "text": "porque el agua hierbe a 100 grados centígrados a nivel del mar."
+  }
+ ]
+}

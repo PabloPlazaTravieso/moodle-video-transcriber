@@ -1,0 +1,28 @@
+ ✔ Table coverage with data set "mod_videoai"
+
+plugin_checks_test (core_message\plugin_checks_test)
+ ✔ Db messages file with data set "mod_videoai"
+
+ffmpeg_test (mod_videoai\local\ffmpeg_test)
+ ✔ Audio command
+ ✔ Video only command
+ ✔ Run reports failure
+ ✔ Transcribe command
+ ✔ Filter escape
+ ✔ Split real video
+
+transcript_test (mod_videoai\local\transcript_test)
+ ✔ Clock
+ ✔ To vtt
+ ✔ Remove hallucinations
+ ✔ Parse srt
+ ✔ Parse response
+ ✔ Parse response rejects bad shapes
+ ✔ Save and read
+
+plugin_checks_test (tool_capability\plugin_checks_test)
+ ✔ Db access file with data set "mod_videoai"
+
+Time: 00:05.507, Memory: 334.00 MB
+
+OK (24 tests, 82 assertions)

@@ -1,0 +1,16 @@
+Mode: audio only
+A. Create activity with h264_aac_1min.mp4
+B. Save the form again without changing the video
+C. Replace the video with vp9_opus_1min.webm
+D. Replace the video with no_audio.mp4
+E. Back to a good video, then force reprocess twice (duplicate tasks)
+F. Permissions on the separated files
+G. Task queued for an activity that is then deleted
+H. HTTP: view page and pluginfile for a fresh activity
+I. Silent video left over from when the option was on is removed on reprocess
+J. Storage used by one activity
+  audio           1.8 MB
+  video          54.1 MB
+  total          55.9 MB (outputs are 3% of the source video)
+ALL PASSED
+PASS: 24  FAIL: 0

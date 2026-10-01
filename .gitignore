@@ -1,0 +1,26 @@
+# Logs and caches from the spike runs
+*.log
+__pycache__/
+*.pyc
+
+# Local environment (paths, secrets)
+.env
+spike/bench/.cookies
+spike/bench/.page.html
+spike/bench/.upload.json
+
+# Media and models never go in the repository: they live in Docker volumes
+*.mp4
+*.webm
+*.mov
+*.mkv
+*.avi
+*.wav
+*.bin
+*.onnx
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

@@ -1,0 +1,73 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 45.15049913999974,
+ "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web. Hoy vamos a crear nuestra primera API REST con Javascript y Node.js. Una API es una interfaz que permite que dos aplicaciones se comuniquen. En una API REST usamos los métodos del protocolo HTTP, GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos.  Primero instalamos el framework express con el comando npm install express. Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT. En la dirección barra usuarios, la función recibe dos parámetros, la petición y la respuesta, y devuelve la lista de usuarios en formato JSON. Por último,  El servidor escucha en el puerto 3000. Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta. Un error muy común es olvidar el código, estado. Recordad, devolver 200 cuando todo va bien, 404 cuando el recurso no existe, y 500 cuando falla el servidor. En la próxima clase conectaremos la API con una base de datos PostgreSQL.",
+ "segments": [
+  {
+   "start": 0.131,
+   "end": 3.432,
+   "text": " Bienvenidos a la sesión número 3 del curso de desarrollo web."
+  },
+  {
+   "start": 3.732,
+   "end": 8.814,
+   "text": "Hoy vamos a crear nuestra primera API REST con Javascript y Node.js."
+  },
+  {
+   "start": 9.134,
+   "end": 13.255,
+   "text": "Una API es una interfaz que permite que dos aplicaciones se comuniquen."
+  },
+  {
+   "start": 13.535,
+   "end": 23.358,
+   "text": "En una API REST usamos los métodos del protocolo HTTP, GT para leer datos, POST para crearlos, PUT para actualizarlos y DELETE para borrarlos."
+  },
+  {
+   "start": 23.698,
+   "end": 28.603,
+   "text": " Primero instalamos el framework express con el comando npm install express."
+  },
+  {
+   "start": 28.903,
+   "end": 36.43,
+   "text": "Después creamos un archivo llamado servidor.js y definimos una ruta que responda a las peticiones GT."
+  },
+  {
+   "start": 36.87,
+   "end": 46.439,
+   "text": "En la dirección barra usuarios, la función recibe dos parámetros, la petición y la respuesta, y devuelve la lista de usuarios en formato JSON."
+  },
+  {
+   "start": 46.719,
+   "end": 47.24,
+   "text": "Por último,"
+  },
+  {
+   "start": 47.76,
+   "end": 50.084,
+   "text": " El servidor escucha en el puerto 3000."
+  },
+  {
+   "start": 50.344,
+   "end": 56.213,
+   "text": "Si abrimos el navegador en localhost 2.3000 barra usuarios, veremos la respuesta."
+  },
+  {
+   "start": 56.573,
+   "end": 59.758,
+   "text": "Un error muy común es olvidar el código, estado."
+  },
+  {
+   "start": 60.078,
+   "end": 68.13,
+   "text": "Recordad, devolver 200 cuando todo va bien, 404 cuando el recurso no existe, y 500 cuando falla el servidor."
+  },
+  {
+   "start": 68.47,
+   "end": 72.536,
+   "text": "En la próxima clase conectaremos la API con una base de datos PostgreSQL."
+  }
+ ]
+}

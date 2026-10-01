@@ -1,0 +1,28 @@
+{
+ "file": "tts_03_silencio_y_musica",
+ "audio_seconds": 77.3689375,
+ "seconds": 13.866359646999626,
+ "text": "Vamos a empezar con un pequeño ejercicio.  Os voy a dejar un minuto para que leáis el enunciado en silencio.  Bien, ya ha pasado el tiempo.  La respuesta correcta es la opción B, porque el agua hierve a 100 grados centígrados a nivel de mar.",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.04,
+   "text": " Vamos a empezar con un pequeño ejercicio."
+  },
+  {
+   "start": 2.4,
+   "end": 5.36,
+   "text": " Os voy a dejar un minuto para que leáis el enunciado en silencio."
+  },
+  {
+   "start": 5.78,
+   "end": 72.06,
+   "text": " Bien, ya ha pasado el tiempo."
+  },
+  {
+   "start": 72.38,
+   "end": 77.18,
+   "text": " La respuesta correcta es la opción B, porque el agua hierve a 100 grados centígrados a nivel de mar."
+  }
+ ]
+}

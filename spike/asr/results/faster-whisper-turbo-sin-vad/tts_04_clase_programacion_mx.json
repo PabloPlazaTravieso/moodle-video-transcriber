@@ -1,0 +1,153 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 76.49580894800056,
+ "text": "Bienvenidos a la sesión número 3 del curso de desarrollo web.  Hoy vamos a crear nuestra primera API REST con Java Script y Node.js.  Una API es una interfaz que permite que dos aplicaciones se comuniquen.  En una API REST usamos los métodos del protocolo HTTP,  GT para leer datos,  POST para crearlos,  PUT para actualizarlos  y DELETE para borrarlos.  Primero instalamos el Framework Express con el comando NPM InstaExpress.  Después creamos un archivo llamado servidor.js  y definimos una ruta que responda a las peticiones GT.  En la dirección barra usuarios,  la función recibe dos parámetros,  la petición y la respuesta,  y devuelve la lista de usuarios en formato JSON.  Por último, el servidor escucha en el puerto 3000.  Si abrimos el navegador en localhost 2.3000 barra usuarios,  veremos la respuesta.  Un error muy común es olvidar el código,  estado,  recordá,  devolver 200 cuando todo va bien,  404 cuando el recurso no existe,  y 500 cuando falla el servidor.  En la próxima clase conectaremos la API  con una base de datos POST-3SQL.  POST-3SQL  POST-3SQL  POST-3SQL",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 3.42,
+   "text": " Bienvenidos a la sesión número 3 del curso de desarrollo web."
+  },
+  {
+   "start": 3.64,
+   "end": 8.68,
+   "text": " Hoy vamos a crear nuestra primera API REST con Java Script y Node.js."
+  },
+  {
+   "start": 9.06,
+   "end": 13.26,
+   "text": " Una API es una interfaz que permite que dos aplicaciones se comuniquen."
+  },
+  {
+   "start": 13.52,
+   "end": 16.82,
+   "text": " En una API REST usamos los métodos del protocolo HTTP,"
+  },
+  {
+   "start": 17.64,
+   "end": 18.78,
+   "text": " GT para leer datos,"
+  },
+  {
+   "start": 19.18,
+   "end": 20.1,
+   "text": " POST para crearlos,"
+  },
+  {
+   "start": 20.52,
+   "end": 21.82,
+   "text": " PUT para actualizarlos"
+  },
+  {
+   "start": 21.82,
+   "end": 23.400000000000002,
+   "text": " y DELETE para borrarlos."
+  },
+  {
+   "start": 23.66,
+   "end": 28.54,
+   "text": " Primero instalamos el Framework Express con el comando NPM InstaExpress."
+  },
+  {
+   "start": 28.54,
+   "end": 32.54,
+   "text": " Después creamos un archivo llamado servidor.js"
+  },
+  {
+   "start": 32.54,
+   "end": 36.3,
+   "text": " y definimos una ruta que responda a las peticiones GT."
+  },
+  {
+   "start": 36.84,
+   "end": 38.519999999999996,
+   "text": " En la dirección barra usuarios,"
+  },
+  {
+   "start": 38.9,
+   "end": 40.62,
+   "text": " la función recibe dos parámetros,"
+  },
+  {
+   "start": 41.24,
+   "end": 42.98,
+   "text": " la petición y la respuesta,"
+  },
+  {
+   "start": 43.5,
+   "end": 46.239999999999995,
+   "text": " y devuelve la lista de usuarios en formato JSON."
+  },
+  {
+   "start": 46.66,
+   "end": 49.84,
+   "text": " Por último, el servidor escucha en el puerto 3000."
+  },
+  {
+   "start": 50.120000000000005,
+   "end": 54.519999999999996,
+   "text": " Si abrimos el navegador en localhost 2.3000 barra usuarios,"
+  },
+  {
+   "start": 55.08,
+   "end": 56.14,
+   "text": " veremos la respuesta."
+  },
+  {
+   "start": 56.14,
+   "end": 58.94,
+   "text": " Un error muy común es olvidar el código,"
+  },
+  {
+   "start": 59.26,
+   "end": 59.68,
+   "text": " estado,"
+  },
+  {
+   "start": 60.02,
+   "end": 60.54,
+   "text": " recordá,"
+  },
+  {
+   "start": 60.86,
+   "end": 62.96,
+   "text": " devolver 200 cuando todo va bien,"
+  },
+  {
+   "start": 63.42,
+   "end": 65.88,
+   "text": " 404 cuando el recurso no existe,"
+  },
+  {
+   "start": 66.22,
+   "end": 68.08,
+   "text": " y 500 cuando falla el servidor."
+  },
+  {
+   "start": 68.4,
+   "end": 70.64,
+   "text": " En la próxima clase conectaremos la API"
+  },
+  {
+   "start": 70.64,
+   "end": 72.14,
+   "text": " con una base de datos POST-3SQL."
+  },
+  {
+   "start": 72.14,
+   "end": 72.82000000000001,
+   "text": " POST-3SQL"
+  },
+  {
+   "start": 72.82000000000001,
+   "end": 73.82000000000001,
+   "text": " POST-3SQL"
+  },
+  {
+   "start": 73.82000000000001,
+   "end": 74.82000000000001,
+   "text": " POST-3SQL"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "name": "faster-whisper-turbo-lotes",
+ "library": "faster-whisper 1.2.1",
+ "model": "large-v3-turbo int8, beam 5, batched x8 (VAD)",
+ "threads": 8,
+ "load_seconds": 5.745188770000823,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 410.8417519570012,
+ "peak_rss_mb": 3660.54296875,
+ "python": "3.12.14"
+}

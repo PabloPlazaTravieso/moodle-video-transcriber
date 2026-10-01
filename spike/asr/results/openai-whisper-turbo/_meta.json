@@ -1,0 +1,11 @@
+{
+ "name": "openai-whisper-turbo",
+ "library": "openai-whisper 20250625",
+ "model": "turbo fp32, beam 5",
+ "threads": 8,
+ "load_seconds": 41.3472107180005,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 1249.736926919999,
+ "peak_rss_mb": 4885.21484375,
+ "python": "3.12.14"
+}

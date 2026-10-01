@@ -1,0 +1,48 @@
+A. New activity: split and transcription chained in one cron run
+  [PASS] audio separated
+  [PASS] transcribed — 23 segments, lang=es, cron 25.6s
+  [PASS] segments ordered and timed
+  [PASS] first sentence — Hola, Daniel.
+  [PASS] VTT and JSON copies — tts_02_tutoria_dos_voces-transcript.json, tts_02_tutoria_dos_voces-transcript.vtt
+  [PASS] model recorded — faster-whisper 1.2.1 large-v3-turbo int8
+  text for the AI:
+    [00:00:00] Hola, Daniel.
+    [00:00:00] Gracias por venir a la tutoría.
+    [00:00:02] ¿En qué te puedo ayudar?
+    [00:00:04] Hola, profesora.
+B. Save the form without changes: nothing is re-transcribed
+  [PASS] no task queued
+C. Force the separation: identical WAV, transcription skipped and status not stuck
+  [PASS] status back to done — status 3
+  [PASS] not re-transcribed
+D. "Transcribe again" forces a new transcription
+  [PASS] re-transcribed
+E. Service unavailable: error recorded, task kept for retry, transcript of the same audio kept
+    task> mod_videoai: transcription of instance 23 failed: The transcription service at http://transcriber:9999/transcribe is not available. The transcription will be retried automatically. (Failed to connect 
+    task> Adhoc task failed: mod_videoai\task\transcribe_audio,The transcription service at http://transcriber:9999/transcribe is not available. The transcription will be retried automatically. (Failed to conne
+  [PASS] error recorded — The transcription service at http://transcriber:9999/transcribe is not available. The transcription will be retried automatically. (Failed to connect to transcriber port 9999 after 1 ms: Couldn't connect to server)
+  [PASS] task kept for retry
+  [PASS] previous transcript kept
+  [PASS] retry succeeds once the service is back
+F. Wrong API key: rejected, not retried
+    task> mod_videoai: transcription of instance 23 failed: The transcription service rejected the request (HTTP 401). ({"detail":"invalid or missing API key"})
+  [PASS] rejected with HTTP 401 — The transcription service rejected the request (HTTP 401). ({"detail":"invalid or missing API key"})
+  [PASS] not retried
+G. Transcription disabled: separation works, nothing is sent
+  [PASS] no transcription task
+H. Silence and music: no invented text, speech after the pause keeps its real time
+  [PASS] nothing between 6 s and 70 s
+    [00:00:00] vamos a empezar con un pequeño ejercicio.
+    [00:00:02] Os voy a dejar un minuto para que leáis el enunciado en silencio.
+    [00:01:10] Muy bien, ya ha pasado el tiempo.
+    [00:01:12] La respuesta correcta es la opción B porque el agua hierve a 100 grados centígrados a nivel del mar.
+I. Video without audio: transcript removed
+    task> mod_videoai: processing of instance 23 failed: The video has no audio track.
+  [PASS] separation error, transcript cleared
+J. Web service function mod_videoai_get_transcript (REST is checked from outside by bench/ws_rest.sh)
+  [PASS] returns the transcript — 22 segments
+  [PASS] students cannot read it by default — nopermissions
+K. Delete an activity
+  [PASS] segments deleted — had 4
+
+ALL PASSED

@@ -1,0 +1,11 @@
+{
+ "name": "canary-1b-v2",
+ "library": "onnx-asr 0.12.0",
+ "model": "nemo-canary-1b-v2 (int8) + Silero VAD",
+ "threads": 8,
+ "load_seconds": 10.022269508001045,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 800.4155544100013,
+ "peak_rss_mb": 3305.73046875,
+ "python": "3.12.14"
+}

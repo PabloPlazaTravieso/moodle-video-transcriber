@@ -1,0 +1,149 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_videoai/view
+
+    Main page of a Video AI activity.
+
+    Context variables required for this template:
+    * videohtml - Embedded player HTML, or null if there is no video.
+    * canprocess - Whether the processing panel is shown.
+    * statuslabel, statusclass, iserror, statusmessage - Processing status.
+    * duration, timeprocessed - Formatted metadata, may be null.
+    * audio, videoonly - {url, filename, size} of each output, or null.
+    * canreprocess, reprocessurl - Reprocess button.
+    * transcript - Transcript panel or null: enabled, statuslabel, statusclass, iserror, message, language, model,
+      timetranscribed, segments [{time, text}], empty, downloads [{url, filename}], canretranscribe, retranscribeurl.
+
+    Example context (json):
+    {
+        "videohtml": "<video controls src=\"#\"></video>",
+        "canprocess": true,
+        "statuslabel": "Processed",
+        "statusclass": "success",
+        "iserror": false,
+        "statusmessage": null,
+        "duration": "12 mins 5 secs",
+        "timeprocessed": "Wednesday, 30 September 2026, 10:00 AM",
+        "audio": {"url": "#", "filename": "class-audio.wav", "size": "22.1 MB"},
+        "videoonly": {"url": "#", "filename": "class-video.mp4", "size": "80 MB"},
+        "canreprocess": true,
+        "reprocessurl": "#",
+        "transcript": {"enabled": true, "statuslabel": "Processed", "statusclass": "success", "language": "es",
+            "timetranscribed": "Wednesday, 30 September 2026, 11:00 AM", "model": "faster-whisper large-v3-turbo int8",
+            "segments": [{"time": "00:00:00", "text": "Buenos días a todos."}],
+            "downloads": [{"url": "#", "filename": "class-transcript.vtt"}], "canretranscribe": true, "retranscribeurl": "#"}
+    }
+}}
+<div class="mod_videoai">
+    {{#videohtml}}
+        <div class="mod_videoai-player mb-4">{{{videohtml}}}</div>
+    {{/videohtml}}
+    {{^videohtml}}
+        <div class="alert alert-info">{{#str}}statusnovideo, mod_videoai{{/str}}</div>
+    {{/videohtml}}
+
+    {{#canprocess}}
+        <section class="card">
+            <div class="card-body">
+                <h3 class="h5 card-title d-flex align-items-center">
+                    {{#str}}separation, mod_videoai{{/str}}
+                    <span class="badge badge-{{statusclass}} bg-{{statusclass}} ml-2 ms-2">{{statuslabel}}</span>
+                </h3>
+
+                {{#iserror}}
+                    <pre class="alert alert-danger small mb-3" style="white-space: pre-wrap;">{{statusmessage}}</pre>
+                {{/iserror}}
+
+                <dl class="row mb-3">
+                    {{#duration}}
+                        <dt class="col-sm-3">{{#str}}duration, mod_videoai{{/str}}</dt>
+                        <dd class="col-sm-9">{{duration}}</dd>
+                    {{/duration}}
+                    {{#timeprocessed}}
+                        <dt class="col-sm-3">{{#str}}timeprocessed, mod_videoai{{/str}}</dt>
+                        <dd class="col-sm-9">{{timeprocessed}}</dd>
+                    {{/timeprocessed}}
+                </dl>
+
+                {{#audio}}
+                    <h4 class="h6">{{#str}}audiofile, mod_videoai{{/str}}</h4>
+                    <audio controls preload="none" class="w-100 mb-1" src="{{url}}"></audio>
+                    <p><a href="{{url}}?forcedownload=1">{{filename}}</a> <span class="text-muted">({{size}})</span></p>
+                {{/audio}}
+
+                {{#videoonly}}
+                    <h4 class="h6">{{#str}}videoonlyfile, mod_videoai{{/str}}</h4>
+                    <video controls muted preload="none" class="w-100 mb-1" style="max-height: 360px;" src="{{url}}"></video>
+                    <p><a href="{{url}}?forcedownload=1">{{filename}}</a> <span class="text-muted">({{size}})</span></p>
+                {{/videoonly}}
+
+                {{#canreprocess}}
+                    <a class="btn btn-secondary" href="{{reprocessurl}}">{{#str}}reprocess, mod_videoai{{/str}}</a>
+                {{/canreprocess}}
+            </div>
+        </section>
+    {{/canprocess}}
+
+    {{#transcript}}
+        <section class="card mt-3">
+            <div class="card-body">
+                <h3 class="h5 card-title d-flex align-items-center">
+                    {{#str}}transcript, mod_videoai{{/str}}
+                    {{#enabled}}
+                        <span class="badge badge-{{statusclass}} bg-{{statusclass}} ml-2 ms-2">{{statuslabel}}</span>
+                    {{/enabled}}
+                </h3>
+
+                {{#iserror}}
+                    <pre class="alert alert-danger small mb-3" style="white-space: pre-wrap;">{{message}}</pre>
+                {{/iserror}}
+
+                <dl class="row mb-3">
+                    {{#timetranscribed}}
+                        <dt class="col-sm-3">{{#str}}timetranscribed, mod_videoai{{/str}}</dt>
+                        <dd class="col-sm-9">{{timetranscribed}}{{#language}} · {{language}}{{/language}}</dd>
+                    {{/timetranscribed}}
+                    {{#model}}
+                        <dt class="col-sm-3">{{#str}}model, mod_videoai{{/str}}</dt>
+                        <dd class="col-sm-9 small text-muted">{{model}}</dd>
+                    {{/model}}
+                </dl>
+
+                {{#empty}}
+                    <p class="text-muted">{{#str}}transcriptempty, mod_videoai{{/str}}</p>
+                {{/empty}}
+
+                {{#segments.0}}
+                    <div class="mod_videoai-transcript border rounded p-2 mb-3" style="max-height: 420px; overflow-y: auto;">
+                        {{#segments}}
+                            <p class="mb-1"><span class="text-muted small font-monospace mr-2 me-2">{{time}}</span>{{text}}</p>
+                        {{/segments}}
+                    </div>
+                {{/segments.0}}
+
+                {{#downloads}}
+                    <a class="btn btn-link px-0 mr-3 me-3" href="{{url}}">{{#str}}transcriptdownload, mod_videoai, {{filename}}{{/str}}</a>
+                {{/downloads}}
+
+                {{#canretranscribe}}
+                    <div><a class="btn btn-secondary" href="{{retranscribeurl}}">{{#str}}retranscribe, mod_videoai{{/str}}</a></div>
+                {{/canretranscribe}}
+            </div>
+        </section>
+    {{/transcript}}
+</div>

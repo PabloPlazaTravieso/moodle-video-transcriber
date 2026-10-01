@@ -1,0 +1,38 @@
+{
+ "file": "real_04_wikipedia_caracas",
+ "audio_seconds": 60.9493125,
+ "seconds": 6.0212105919999885,
+ "text": "caracas es la capital y la ciudad más poblada de venezuela desde el siglo diecinueve es considerada el centro del poder político y económico de venezuela se encuentra ubicada en la zona centro norte costera del país a doce kilómetros de la costa del mar caribe y se sitúa dentro de un valle montañoso aunque próxima a la costa la ciudad se sitúa a casi novecientos metros de altitud separada del litoral central por la cordillera de la costa que a su paso por el núcleo urbano se constituye como el parque nacional o'hara ir re pano o el ávila la autopista caracas la guaira sirve como principal vía de comunicación entre la ciudad y el estado costero de la guaira así como el aeropuerto internacional simón bolívar de maiquetía y el puerto de la guaira el segundo puerto del país",
+ "segments": [
+  {
+   "start": 0.33,
+   "end": 5.46,
+   "text": "caracas es la capital y la ciudad más poblada de venezuela"
+  },
+  {
+   "start": 6.27,
+   "end": 12.06,
+   "text": "desde el siglo diecinueve es considerada el centro del poder político y económico de venezuela"
+  },
+  {
+   "start": 12.78,
+   "end": 17.16,
+   "text": "se encuentra ubicada en la zona centro norte costera del país"
+  },
+  {
+   "start": 18.15,
+   "end": 37.83,
+   "text": "a doce kilómetros de la costa del mar caribe y se sitúa dentro de un valle montañoso aunque próxima a la costa la ciudad se sitúa a casi novecientos metros de altitud separada del litoral central por la cordillera de la costa que a su paso por el núcleo urbano"
+  },
+  {
+   "start": 38.19,
+   "end": 42.99,
+   "text": "se constituye como el parque nacional o'hara ir re pano o el ávila"
+  },
+  {
+   "start": 44.67,
+   "end": 60.72,
+   "text": "la autopista caracas la guaira sirve como principal vía de comunicación entre la ciudad y el estado costero de la guaira así como el aeropuerto internacional simón bolívar de maiquetía y el puerto de la guaira el segundo puerto del país"
+  }
+ ]
+}

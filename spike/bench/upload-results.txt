@@ -1,0 +1,62 @@
+form: module=23 sesskey=azDpswXU4P videodraft=819046095 introdraft=29117532 ctx=11
+upload: HTTP 200, 571368942 bytes in 6.500745s
+upload response: {"url":"http:\/\/localhost:8000\/draftfile.php\/5\/user\/draft\/819046095\/lecture.mp4","id":819046095,"file":"lecture.mp4"}
+form submit: HTTP 000 -> 
+<!DOCTYPE html>
+<html  lang="en" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>Redirect</title>
+        <style>
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #343a40;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+#page {
+    margin-top: 15px;
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+}
+#region-main {
+    margin: 0 auto;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 1rem 1.25rem 1.25rem;
+    background-color: #fff;
+}
+h1 {
+    font-size: 2.34rem;
+    margin: 0 0 .5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+.alert-danger {
+    color: #6e211e;
+    background-color: #f6d9d8;
+    border-color: #f3c9c8;
+    padding: .75rem 1.25rem;
+}
+    </style>
+    </head>
+    <body>
+        <div id="page">
+            <div id="region-main">
+                <h1>Redirect</h1>
+                <div style="margin-top: 3em; margin-left:auto; margin-right:auto; text-align:center;">This page should automatically redirect. If nothing is happening please use the continue link below.<br /><a href="http://localhost:8000/mod/videoai/view.php?id=10&amp;forceview=1">Continue</a></div>                            </div>
+        </div>
+    </body>
+</html>
+
+form submit: HTTP 303 -> http://localhost:8000/mod/videoai/view.php?id=10&forceview=1
+exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-l
+exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core_availability-form":{"requires":["base","no
+exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-datesele
+exception"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom
+exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["mo

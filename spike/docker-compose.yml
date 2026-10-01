@@ -1,0 +1,74 @@
+# Throwaway environment for the mod_videoai spike.
+# Reuses a Moodle 4.5 checkout (MOODLE_SRC, e.g. in spike/.env) without modifying it:
+# config.php and mod/videoai are bind-mounted over a copy of it inside the container only.
+name: videoai-spike
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: moodle
+      POSTGRES_PASSWORD: moodle
+      POSTGRES_DB: moodle
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  webserver:
+    build: .
+    image: videoai-spike-web
+    depends_on: [db]
+    ports:
+      - "8000:80"
+    environment:
+      # Videos are uploaded through the browser, so the 200M image default is too low.
+      PHP_INI-upload_max_filesize: 2G
+      PHP_INI-post_max_size: 2G
+      PHP_INI-memory_limit: 512M
+    volumes:
+      # The checkout is mounted read-only and copied into a Linux volume by bench/sync_code.sh:
+      # running Moodle straight from a Windows bind mount is roughly 10x slower.
+      - "${MOODLE_SRC:-../../moodle}:/moodle-src:ro"  # a Moodle 4.5 checkout; set MOODLE_SRC to its path
+      - moodlecode:/var/www/html
+      - "./config.php:/var/www/html/config.php:ro"
+      - "../videoai:/var/www/html/mod/videoai"
+      - "./bench:/bench"
+      - samplesdata:/samples
+      # Whisper models for the FFmpeg whisper filter, and the comparison results folder.
+      - videoai-asr_asrmodels:/models:ro
+      - "./asr:/asr"
+      - moodledata:/var/www/moodledata
+      - phpunitdata:/var/www/phpunitdata
+
+  # Transcription service (../transcriber). Reuses the faster-whisper model downloaded for the comparison.
+  # Moodle reaches it at http://transcriber:8000; from Windows it is http://localhost:8001.
+  transcriber:
+    build: ../transcriber
+    image: videoai-transcriber
+    environment:
+      API_KEY: spike-secret
+      WHISPER_THREADS: "8"
+      MODEL_DIR: /models/faster-whisper
+    volumes:
+      - videoai-asr_asrmodels:/models
+    ports:
+      - "8001:8000"
+
+  # Only for building the test video set: docker compose --profile tools run --rm tools sh samples/make_samples.sh
+  tools:
+    profiles: [tools]
+    build:
+      context: .
+      dockerfile: Dockerfile.tools
+    image: videoai-spike-tools
+    volumes:
+      - "./samples:/work/samples"
+      - samplesdata:/samples
+
+volumes:
+  videoai-asr_asrmodels:
+    external: true
+  samplesdata:
+  dbdata:
+  moodlecode:
+  moodledata:
+  phpunitdata:

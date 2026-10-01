@@ -1,0 +1,28 @@
+{
+ "file": "tts_04_clase_programacion_mx",
+ "audio_seconds": 73.0964375,
+ "seconds": 8.051284959999975,
+ "text": "bienvenidos a la sesión número tres del curso de desarrollo web hoy vamos a crear nuestra primera pei res con javascript y no de punto jota ese una ape y es una interfaz que permite que dos aplicaciones se comuniquen en una api rest usamos los métodos del protocolo gaceta t h t para leer datos post para crear los te ute para actualizar los y deleite para borrar los primero instalamos el framework express con el comando en etc m s that express después creamos un archivo llamado servidor punto jota ese y definimos una ruta que responda a las peticiones h t en la dirección barra su arios la fusión recibe dos para metros la petición y la respuesta y devuelve la lista de usuarios en formato jota son por último el servidor escucha en el puerto tres mil era si abrimos el navegador en loca los dos puntos tres mil barra usuarios veremos la respuesta un error muy común es olvidar el código estado recordad devolver doscientos cuando todo va bien cuatrocientos cuatro cuando el recurso no existe y quinientos cuando falla el servidor en la próxima clase con estaremos la con una base de datos postre se cuele",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 20.16,
+   "text": "bienvenidos a la sesión número tres del curso de desarrollo web hoy vamos a crear nuestra primera pei res con javascript y no de punto jota ese una ape y es una interfaz que permite que dos aplicaciones se comuniquen en una api rest usamos los métodos del protocolo gaceta t h t para leer datos post para crear los"
+  },
+  {
+   "start": 20.46,
+   "end": 40.32,
+   "text": "te ute para actualizar los y deleite para borrar los primero instalamos el framework express con el comando en etc m s that express después creamos un archivo llamado servidor punto jota ese y definimos una ruta que responda a las peticiones h t en la dirección barra su arios la fusión recibe dos para"
+  },
+  {
+   "start": 40.38,
+   "end": 60.63,
+   "text": "metros la petición y la respuesta y devuelve la lista de usuarios en formato jota son por último el servidor escucha en el puerto tres mil era si abrimos el navegador en loca los dos puntos tres mil barra usuarios veremos la respuesta un error muy común es olvidar el código estado recordad"
+  },
+  {
+   "start": 60.81,
+   "end": 73.02,
+   "text": "devolver doscientos cuando todo va bien cuatrocientos cuatro cuando el recurso no existe y quinientos cuando falla el servidor en la próxima clase con estaremos la con una base de datos postre se cuele"
+  }
+ ]
+}

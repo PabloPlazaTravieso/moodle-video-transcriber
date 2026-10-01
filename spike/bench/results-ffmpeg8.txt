@@ -1,0 +1,11 @@
+file                                 dur(s)       MB |   probe   audio   video |    wav MB  video MB | result
+clase 1 introducción á.mov             60     54.1 |   0.07s   0.31s   0.15s |       1.8      53.5 | OK wav= audio-in-video=no video-in-wav=no wavdur=60.0
+h264_aac_1min.mp4                        60     54.1 |   0.07s   0.51s   0.15s |       1.8      53.5 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=60.0
+hevc_aac.mp4                             60     12.5 |   0.01s   0.31s   0.15s |       1.8      11.9 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=60.0
+lecture_10min_720p.mp4                  600    544.9 |   0.03s   1.11s   1.71s |      18.3     535.3 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=600.0
+lecture_60min_360p.mp4                 3600    364.5 |   0.07s   9.12s   2.12s |     109.9     321.6 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=3600.0
+mpeg4_mp3.avi                            60      3.1 |   0.01s   0.31s   0.07s |       1.8       2.5 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=60.0
+no_audio.mp4                             30     26.8 |   0.03s       -       - |         -         - | ERR errornoaudio
+truncated.mp4                             -      0.3 |       -       -       - |         -         - | ERR errorffmpegfailed: exit code 1: [mov,mp4,m4a,3gp,3g2,mj2 @ 0x5b7ec67c0cc0] moov atom not found /tmp/videos/tr
+two_audio_tracks.mkv                     60     54.6 |   0.03s   0.31s   0.15s |       1.8      53.6 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=60.0
+vp9_opus_1min.webm                       60      9.8 |   0.03s   0.31s   0.07s |       1.8       9.1 | OK wav=pcm_s16le,16000,1 audio-in-video=no video-in-wav=no wavdur=60.0

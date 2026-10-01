@@ -1,0 +1,11 @@
+{
+ "name": "parakeet-tdt-0.6b-v3",
+ "library": "onnx-asr 0.12.0",
+ "model": "nemo-parakeet-tdt-0.6b-v3 (int8) + Silero VAD",
+ "threads": 8,
+ "load_seconds": 12.798954334999507,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 340.8264731110012,
+ "peak_rss_mb": 2330.30078125,
+ "python": "3.12.14"
+}

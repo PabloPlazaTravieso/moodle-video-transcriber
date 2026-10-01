@@ -1,0 +1,11 @@
+{
+ "name": "whisper.cpp-turbo-q5",
+ "library": "whisper.cpp v1.9.4",
+ "model": "ggml-large-v3-turbo-q5_0.bin, beam 5",
+ "threads": 8,
+ "load_seconds": 46.53761624799972,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 2002.0945351939981,
+ "peak_rss_mb": 943.484375,
+ "python": "3.12.14"
+}

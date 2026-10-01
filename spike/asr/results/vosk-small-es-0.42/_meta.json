@@ -1,0 +1,11 @@
+{
+ "name": "vosk-small-es-0.42",
+ "library": "vosk 0.3.45",
+ "model": "vosk-model-small-es-0.42",
+ "threads": 8,
+ "load_seconds": 0.7223775260008551,
+ "audio_seconds": 966.1793749999999,
+ "proc_seconds": 117.63643362900257,
+ "peak_rss_mb": 344.2109375,
+ "python": "3.12.14"
+}

@@ -1,0 +1,18 @@
+Created 0 activities, adhoc run took 0.3s (exit 0)
+
+activity                                 status  video MB   dur (s)   audio MB  audio file
+real_01_las_estrellas                    OK          39.0     583.9       17.8  real_01_las_estrellas-audio.wav
+real_02_cuidemos_el_planeta              OK          43.1     897.2       27.4  real_02_cuidemos_el_planeta-audio.wav
+real_03_mi_casa_es_una_burbuja           OK           8.7      71.2        2.2  real_03_mi_casa_es_una_burbuja-audio.wav
+real_04_wikipedia_caracas                OK           2.2      62.4        1.9  real_04_wikipedia_caracas-audio.wav
+real_05_poema_el_cuervo                  OK          10.7     294.1        8.9  real_05_poema_el_cuervo-audio.wav
+real_06_acento_canario                   OK           2.9      79.8        2.4  real_06_acento_canario-audio.wav
+real_07_wikipedia_dolores_cacuango       OK          19.3     525.6       16.0  real_07_wikipedia_dolores_cacuango-audio.wav
+tts_01_clase_fotosintesis                OK           2.9      86.5        2.6  tts_01_clase_fotosintesis-audio.wav
+tts_02_tutoria_dos_voces                 OK           1.9      57.3        1.7  tts_02_tutoria_dos_voces-audio.wav
+tts_03_silencio_y_musica                 OK           1.9      78.1        2.4  tts_03_silencio_y_musica-audio.wav
+tts_04_clase_programacion_mx             OK           2.5      73.1        2.2  tts_04_clase_programacion_mx-audio.wav
+tts_05_clase_fotosintesis_ruido          OK           2.9      86.7        2.6  tts_05_clase_fotosintesis_ruido-audio.wav
+
+Course: http://localhost:8000/course/view.php?id=7
+ALL PROCESSED

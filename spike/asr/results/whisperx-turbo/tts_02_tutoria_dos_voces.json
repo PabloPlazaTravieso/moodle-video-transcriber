@@ -1,0 +1,123 @@
+{
+ "file": "tts_02_tutoria_dos_voces",
+ "audio_seconds": 57.306875,
+ "seconds": 36.12542551600018,
+ "text": "Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar? Hola, profesora. Tengo dudas con el trabajo final de historia. No sé cómo elegir el tema. Es normal. Te recomiendo que elijas algo que te interese de verdad. ¿Qué época te gustó más durante el curso? La revolución industrial. Me pareció muy interesante cómo cambió la vida en las ciudades. Perfecto. Podrías centrarte en las condiciones de trabajo en las fábricas de Inglaterra durante el siglo XIX.  ¿Y cuántas páginas tiene que tener el trabajo? Entre 10 y 15 páginas, sin contar la bibliografía. La fecha de entrega es el 20 de mayo. ¿Puedo usar fuentes de Internet? Sí, pero tienen que ser fiables. Usa la Biblioteca Digital de la Universidad y cita siempre la fuente. Muchas gracias. Le enviaré un primer índice la semana que viene. Muy bien, Daniel. Te espero el martes a las 4 de la tarde para revisarlo.",
+ "segments": [
+  {
+   "start": 0.031,
+   "end": 1.072,
+   "text": " Hola, Daniel."
+  },
+  {
+   "start": 1.112,
+   "end": 2.713,
+   "text": "Gracias por venir a la tutoría."
+  },
+  {
+   "start": 2.733,
+   "end": 3.994,
+   "text": "¿En qué te puedo ayudar?"
+  },
+  {
+   "start": 4.014,
+   "end": 5.675,
+   "text": "Hola, profesora."
+  },
+  {
+   "start": 5.855,
+   "end": 8.497,
+   "text": "Tengo dudas con el trabajo final de historia."
+  },
+  {
+   "start": 8.777,
+   "end": 10.158,
+   "text": "No sé cómo elegir el tema."
+  },
+  {
+   "start": 10.919,
+   "end": 11.419,
+   "text": "Es normal."
+  },
+  {
+   "start": 11.559,
+   "end": 14.381,
+   "text": "Te recomiendo que elijas algo que te interese de verdad."
+  },
+  {
+   "start": 14.401,
+   "end": 16.683,
+   "text": "¿Qué época te gustó más durante el curso?"
+  },
+  {
+   "start": 17.523,
+   "end": 19.064,
+   "text": "La revolución industrial."
+  },
+  {
+   "start": 19.285,
+   "end": 22.707,
+   "text": "Me pareció muy interesante cómo cambió la vida en las ciudades."
+  },
+  {
+   "start": 23.468,
+   "end": 24.108,
+   "text": "Perfecto."
+  },
+  {
+   "start": 24.148,
+   "end": 29.192,
+   "text": "Podrías centrarte en las condiciones de trabajo en las fábricas de Inglaterra durante el siglo XIX."
+  },
+  {
+   "start": 30.273,
+   "end": 32.596,
+   "text": " ¿Y cuántas páginas tiene que tener el trabajo?"
+  },
+  {
+   "start": 33.376,
+   "end": 36.5,
+   "text": "Entre 10 y 15 páginas, sin contar la bibliografía."
+  },
+  {
+   "start": 36.66,
+   "end": 38.802,
+   "text": "La fecha de entrega es el 20 de mayo."
+  },
+  {
+   "start": 38.822,
+   "end": 41.185,
+   "text": "¿Puedo usar fuentes de Internet?"
+  },
+  {
+   "start": 41.966,
+   "end": 43.727,
+   "text": "Sí, pero tienen que ser fiables."
+  },
+  {
+   "start": 43.968,
+   "end": 47.612,
+   "text": "Usa la Biblioteca Digital de la Universidad y cita siempre la fuente."
+  },
+  {
+   "start": 48.473,
+   "end": 49.233,
+   "text": "Muchas gracias."
+  },
+  {
+   "start": 49.514,
+   "end": 51.896,
+   "text": "Le enviaré un primer índice la semana que viene."
+  },
+  {
+   "start": 52.657,
+   "end": 53.458,
+   "text": "Muy bien, Daniel."
+  },
+  {
+   "start": 53.578,
+   "end": 56.601,
+   "text": "Te espero el martes a las 4 de la tarde para revisarlo."
+  }
+ ]
+}

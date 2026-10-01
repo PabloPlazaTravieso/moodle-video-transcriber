@@ -1,0 +1,10 @@
+{
+    "name": "ffmpeg-whisper-q30-vad",
+    "library": "ffmpeg version 8.1.3 Copyright (c) 2000-2026 the FFmpeg developers",
+    "model": "large-v3-turbo q5_0, greedy, queue 30s, VAD on, vad_min_silence_duration=2",
+    "threads": 8,
+    "load_seconds": 0,
+    "audio_seconds": 966.1793770000002,
+    "proc_seconds": 874.3663835525513,
+    "peak_rss_mb": 827.3125
+}
