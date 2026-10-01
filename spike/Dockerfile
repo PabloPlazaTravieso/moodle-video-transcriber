@@ -22,7 +22,8 @@ RUN curl -sfL https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz | tar 
     && make -j"$(nproc)" && make install
 
 FROM ${BASE}
-RUN apt-get update && apt-get install -y --no-install-recommends libx264-164 libgomp1 \
+# git: bench/sync_code.sh clones Moodle when there is no local checkout.
+RUN apt-get update && apt-get install -y --no-install-recommends libx264-164 libgomp1 git \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=build /usr/local/bin/ffmpeg /usr/local/bin/ffprobe /usr/local/bin/
 COPY --from=build /usr/local/lib/ /usr/local/lib/

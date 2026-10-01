@@ -1,4 +1,4 @@
-<?php  // Moodle configuration file for the mod_videoai spike (Docker only).
+<?php  // Moodle configuration for the local Docker test environment (spike/). Not for production.
 unset($CFG);
 global $CFG;
 $CFG = new stdClass();
@@ -12,7 +12,8 @@ $CFG->dbpass    = 'moodle';
 $CFG->prefix    = 'm_';
 $CFG->dboptions = ['dbpersist' => 0, 'dbport' => '', 'dbsocket' => ''];
 
-$CFG->wwwroot   = 'http://localhost:8000';
+// Set by docker-compose from MOODLE_PORT.
+$CFG->wwwroot   = getenv('MOODLE_WWWROOT') ?: 'http://localhost:8000';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;

@@ -183,3 +183,23 @@ Resultados:
   la tarea nocturna. Encontró un requisito real: la cuenta necesita `moodle/course:view`, porque sin estar matriculada
   Moodle responde `requireloginerror`. Los tests de PHPUnit no lo detectaban porque usaban el administrador.
 - **Modo por categorías:** sigue en 13/13, y web/REST en 6/6.
+
+## Novena ronda: entorno de un solo comando (`spike/setup.sh`)
+
+Para que otra persona con Docker lo ejecute en su equipo. El entorno ya no depende de nada preparado a mano:
+- clona Moodle 4.5 dentro de Docker si no hay copia local (`MOODLE_SRC`);
+- descarga los modelos a un volumen propio;
+- genera solo las voces sintéticas (`SAMPLES=tts`);
+- instala el paquete de idioma español;
+- configura los plugins, crea el curso «Demo: Transcriptor de vídeo con Pulse» y arranca un cron cada minuto.
+
+El puerto y el nombre del entorno son configurables. Prueba en limpio (copia del repositorio sin `.env`, entorno `vtfresh`,
+puerto 8100, volúmenes vacíos):
+- **instalación completa en 5 min 11 s**, con la imagen de FFmpeg 8 en caché; la primera vez en otro equipo hay que
+  sumar unos 15-20 min de compilación;
+- **«Activar ahora»** pulsado como usuario: el cron transcribió los 3 vídeos en unos 4 min 40 s, y la actividad del curso
+  quedó procesada;
+- **segunda ejecución:** 33 s, saltándose todo lo ya hecho.
+
+Observación: en la tutoría, el primer trozo de 25 s salió sin puntuación y con «Daniel» → «aniel» (motor FFmpeg). El resto
+estaba correcto. Es una variabilidad del filtro que encaja con lo visto en la sexta ronda.

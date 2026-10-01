@@ -70,6 +70,8 @@ $F -i "$T/foto.wav" -f lavfi -i "anoisesrc=c=pink:r=22050:a=0.08" \
 to_video "$T/noisy.wav" "$OUT/tts_05_clase_fotosintesis_ruido.mp4" 0x6d597a
 cp "$TXT/clase_fotosintesis.txt" "$OUT/reference/tts_05_clase_fotosintesis_ruido.txt"
 
+# SAMPLES=tts skips the downloads from Wikimedia Commons (enough for the demo course).
+if [ "${SAMPLES:-all}" != "tts" ]; then
 echo "== Real speech (Wikimedia Commons) =="
 fetch() { # $1 Commons file name, $2 output
   [ -f "$2" ] || curl -sfL -A "videoai-spike/0.1 (test media for a Moodle plugin)" -o "$2" \
@@ -85,6 +87,8 @@ fetch 'Edgar Allan Poe - El Cuervo Spanish.ogg' "$T/cuervo.ogg" && to_video "$T/
 fetch 'CanariasVoz1.ogg' "$T/canarias.ogg" && to_video "$T/canarias.ogg" "$OUT/real_06_acento_canario.mp4" 0x01264c
 fetch 'Dolores cacuango.ogg' "$T/dolores.ogg" && to_video "$T/dolores.ogg" "$OUT/real_07_wikipedia_dolores_cacuango.mp4" 0x314668
 
+fi
+
 # Approximate references for real recordings: the Wikipedia revision each volunteer read
 # (built with samples/wiki_to_text.php; Caracas is the first intro paragraph, 62 s at ~140 words/min).
 for r in real_04_wikipedia_caracas real_07_wikipedia_dolores_cacuango; do cp "$TXT/$r.txt" "$OUT/reference/$r.txt"; done
@@ -93,6 +97,7 @@ mkdir -p "$OUT/audio" && chmod 777 "$OUT/audio"  # written by the plugin export 
 rm -rf "$T"
 echo "== Result =="
 for f in "$OUT"/*.mp4 "$OUT"/*.webm; do
+  [ -f "$f" ] || continue  # No .webm when SAMPLES=tts.
   d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
   a=$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$f")
   mb=$(awk "BEGIN{printf \"%.1f\", $(stat -c %s "$f")/1048576}")

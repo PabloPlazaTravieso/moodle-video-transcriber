@@ -24,3 +24,7 @@ spike/bench/.upload.json
 .idea/
 Thumbs.db
 desktop.ini
+
+# Optional local Moodle checkout for spike/ (see spike/README.md); only the placeholder is tracked
+spike/moodle-src/*
+!spike/moodle-src/.gitkeep

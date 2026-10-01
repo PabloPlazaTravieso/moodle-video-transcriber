@@ -1,6 +1,9 @@
-# Throwaway environment for the mod_videoai spike.
-# Reuses a Moodle 4.5 checkout (MOODLE_SRC, e.g. in spike/.env) without modifying it:
-# config.php and mod/videoai are bind-mounted over a copy of it inside the container only.
+# Local test environment for mod_videoai and local_videotranscriber: Moodle 4.5 + PostgreSQL + FFmpeg 8 with Whisper.
+# Start everything with ./setup.sh (see README.md). Moodle's code lives in a Docker volume: it is cloned from GitHub,
+# or copied from an existing checkout if MOODLE_SRC points to one (in spike/.env). The plugins are bind-mounted
+# from this repository, so edits are live.
+#
+# Settings (spike/.env or environment): MOODLE_PORT (8000), TRANSCRIBER_PORT (8001), MOODLE_SRC, MODELS_VOLUME.
 name: videoai-spike
 
 services:
@@ -18,31 +21,34 @@ services:
     image: videoai-spike-web
     depends_on: [db]
     ports:
-      - "8000:80"
+      - "${MOODLE_PORT:-8000}:80"
     environment:
+      MOODLE_WWWROOT: "http://localhost:${MOODLE_PORT:-8000}"
       # Videos are uploaded through the browser, so the 200M image default is too low.
       PHP_INI-upload_max_filesize: 2G
       PHP_INI-post_max_size: 2G
       PHP_INI-memory_limit: 512M
     volumes:
-      # The checkout is mounted read-only and copied into a Linux volume by bench/sync_code.sh:
-      # running Moodle straight from a Windows bind mount is roughly 10x slower.
-      - "${MOODLE_SRC:-../../moodle}:/moodle-src:ro"  # a Moodle 4.5 checkout; set MOODLE_SRC to its path
+      # Optional existing Moodle 4.5 checkout, copied into the moodlecode volume by bench/sync_code.sh (running
+      # Moodle straight from a Windows bind mount is roughly 10x slower). Without one, sync_code.sh clones Moodle.
+      - "${MOODLE_SRC:-./moodle-src}:/moodle-src:ro"
       - moodlecode:/var/www/html
       - "./config.php:/var/www/html/config.php:ro"
       - "../videoai:/var/www/html/mod/videoai"
       - "../local_videotranscriber:/var/www/html/local/videotranscriber"
       - "./bench:/bench"
       - samplesdata:/samples
-      # Whisper models for the FFmpeg whisper filter, and the comparison results folder.
-      - videoai-asr_asrmodels:/models:ro
+      # Whisper models for the FFmpeg whisper filter (downloaded by setup.sh), and the comparison results folder.
+      - whispermodels:/models
       - "./asr:/asr"
       - moodledata:/var/www/moodledata
       - phpunitdata:/var/www/phpunitdata
 
-  # Transcription service (../transcriber). Reuses the faster-whisper model downloaded for the comparison.
-  # Moodle reaches it at http://transcriber:8000; from Windows it is http://localhost:8001.
+  # Optional external transcription service (../transcriber), for the "External service" engine:
+  #   docker compose --profile service up -d transcriber
+  # Moodle reaches it at http://transcriber:8000. It downloads its model (1.6 GB) on first start.
   transcriber:
+    profiles: [service]
     build: ../transcriber
     image: videoai-transcriber
     environment:
@@ -50,9 +56,9 @@ services:
       WHISPER_THREADS: "8"
       MODEL_DIR: /models/faster-whisper
     volumes:
-      - videoai-asr_asrmodels:/models
+      - whispermodels:/models
     ports:
-      - "8001:8000"
+      - "${TRANSCRIBER_PORT:-8001}:8000"
 
   # Only for building the test video set: docker compose --profile tools run --rm tools sh samples/make_samples.sh
   tools:
@@ -66,8 +72,9 @@ services:
       - samplesdata:/samples
 
 volumes:
-  videoai-asr_asrmodels:
-    external: true
+  whispermodels:
+    # Lets an existing model volume be reused (MODELS_VOLUME in .env), e.g. the one from the asr/ comparison.
+    name: ${MODELS_VOLUME:-videoai-whisper-models}
   samplesdata:
   dbdata:
   moodlecode:

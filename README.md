@@ -94,19 +94,17 @@ Pruebas del plugin:
 - Los vídeos enlazados desde fuera de Moodle (YouTube, Vimeo…) no se transcriben automáticamente.
 - Solo se ha probado con voz sintética, Wikipedia y documentales; faltan clases reales.
 
-## Probarlo en local (Docker)
+## Probarlo en local (Docker, un comando)
 
 ```sh
-cd spike
-echo "MOODLE_SRC=/ruta/a/un/checkout/de/moodle-4.5" > .env
-docker compose up -d --build              # Moodle + PostgreSQL + FFmpeg 8 con Whisper
-docker compose exec webserver sh /bench/sync_code.sh
-docker compose exec -u www-data webserver php admin/cli/install_database.php --agree-license \
-  --fullname="Video Transcriber" --shortname=vt --adminuser=admin --adminpass='Admin1234!' --adminemail=admin@example.com
+git clone https://github.com/PabloPlazaTravieso/moodle-video-transcriber.git
+cd moodle-video-transcriber/spike
+./setup.sh        # en Windows, desde Git Bash
 ```
 
-Sitio en <http://localhost:8000>. Las credenciales de [`spike/`](spike/) (`Admin1234!`, `spike-secret`, `moodle/moodle`) son
-**solo para este entorno local**. Los pasos completos, las muestras y la comparativa están en [`spike/SPIKE.md`](spike/SPIKE.md).
+En 20-40 minutos la primera vez deja **<http://localhost:8000>** (usuario `admin`, contraseña `Admin1234!`) con los dos
+plugins, FFmpeg 8 con Whisper y un curso de demostración listo para pulsar «Activar ahora», como hará Pulse. Hay más
+detalles en [`spike/README.md`](spike/README.md). Las credenciales son solo para uso local.
 
 ## Licencia
 
