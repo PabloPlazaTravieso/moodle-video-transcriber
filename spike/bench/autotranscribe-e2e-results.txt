@@ -1,0 +1,41 @@
+Engine: ffmpeg
+A. Videos in different places of the courses
+  [PASS] 3 distinct videos found in scope (tutoría counted once, submission and course B ignored) — local_videotranscriber: 3 videos in scope, 3 new, 3 queued, 0 removed.
+  [PASS] all 3 transcribed — 229s for the adhoc run
+B. Web service per course
+  [PASS] course A1 has 3 videos, all ready — tts_01_clase_fotosintesis.mp4, clase_programacion.mp4, tts_02_tutoria_dos_voces.mp4
+  [PASS] the tutoría is listed in both places it appears in A1 — Tema 1: tutoría + Material extra
+  [PASS] transcript text ready for the AI — [00:00:00] Hola, Daniel. Gracias por venir a la tutoría. ¿En qué te puedo ayudar?
+  [PASS] course A2 (subcategory) shares the same transcript
+  [PASS] course B1 out of scope: nothing transcribed, video reported as not picked up
+C. Running again changes nothing
+  [PASS] no new, nothing queued — local_videotranscriber: 3 videos in scope, 0 new, 0 queued, 0 removed.
+D. Teacher replaces the video in the page
+  [PASS] new video registered and the replaced one forgotten — local_videotranscriber: 3 videos in scope, 1 new, 1 queued, 1 removed.
+  [PASS] old transcript gone
+  [PASS] new video transcribed — [00:00:00] Vamos a empezar con un pequeño ejercicio. | [00:00:02] Os voy a dejar un minuto para que leáis el enunciado en silencio. | [00:00:55] Muy bien, ya ha pasado el tiempo. | [00:01:12] La respuesta correcta es la opción B, porque el agua hierve a 100 grados centígrados a nivel del mar.
+E. A copy is deleted, another remains
+instantiating backup controller 489f66ca480cc869a757ff868f5ce352
+setting controller status to 100
+loading controller plan
+setting controller status to 300
+applying plan defaults
+setting controller status to 400
+setting file inclusion to 
+checking plan security
+setting controller status to 700
+saving controller to db
+calculating controller checksum 4c2cc878b266f67d8b19c6d32154e814
+loading controller from db
+setting file inclusion to 1
+setting controller status to 800
+saving controller to db
+calculating controller checksum 96715652021a263d3c662d128dc67f3c
+loading controller from db
+setting controller status to 1000
+saving controller to db
+  [PASS] tutoría kept (still in A1) — local_videotranscriber: 3 videos in scope, 0 new, 0 queued, 0 removed.
+F. Maximum duration
+  [PASS] video longer than 1 minute skipped with a reason — Longer than the maximum of 1 minutes.
+
+ALL PASSED

@@ -17,6 +17,7 @@ La parte de preguntas y respuestas (la IA) está por integrar.
 | Carpeta | Contenido |
 |---|---|
 | [`videoai/`](videoai/) | **El plugin de Moodle** (`mod_videoai`). Se copia a `moodle/mod/videoai`. Ver su [README](videoai/README.md). |
+| [`local_videotranscriber/`](local_videotranscriber/) | **Transcripción automática de los vídeos que ya están en los cursos** (Archivo, Página, Carpeta…). Se copia a `moodle/local/videotranscriber`. Ver su [README](local_videotranscriber/README.md). |
 | [`transcriber/`](transcriber/) | Servicio opcional de transcripción (Python, faster-whisper) para cuando hay mucho volumen o una GPU aparte. |
 | [`spike/`](spike/) | Investigación y pruebas: entorno Docker con Moodle, vídeos de prueba, comparativa de 7 librerías de transcripción y todos los resultados. Empieza por [`spike/SPIKE.md`](spike/SPIKE.md). |
 
@@ -36,6 +37,18 @@ curl https://tu-moodle/webservice/rest/server.php \
 # → {"ready": true, "segments": [{"start": 1.14, "end": 6.42, "text": "Hoy vamos a hablar de..."}],
 #    "text": "[00:00:01] Hoy vamos a hablar de...\n[00:00:06] ...", ...}
 ```
+
+### Vídeos que ya están en los cursos: automático con Pulse
+
+Con [`local_videotranscriber`](local_videotranscriber/README.md), los vídeos que el profesorado ha puesto en un curso se
+transcriben solos **en cuanto Pulse (el chatbot) se activa en ese curso**:
+- Pulse llama a `local_videotranscriber_set_course_enabled`;
+- o, si ya estaba activo, basta con que pida las transcripciones;
+- los vídeos que se añadan después también se detectan solos.
+
+El mismo vídeo en varios cursos se transcribe una sola vez, y nunca se tocan las entregas ni los archivos de los alumnos.
+Pulse lee el resultado con `local_videotranscriber_get_course_transcripts`, que indica también en qué actividad está cada
+vídeo. La guía de integración para el equipo de Pulse está en su [README](local_videotranscriber/README.md#para-el-equipo-de-pulse-integración).
 
 ## Instalación rápida
 
@@ -68,7 +81,8 @@ El «error» es el porcentaje de palabras mal transcritas. En voz real está inf
 Pruebas del plugin:
 - tests automáticos (PHPUnit): 24/24;
 - separación de principio a fin: 24/24;
-- transcripción de principio a fin: 22/22 con el servicio y 18/19 con FFmpeg (ver limitaciones).
+- transcripción de principio a fin: 22/22 con el servicio y 18/19 con FFmpeg (ver limitaciones);
+- transcripción automática de los cursos: PHPUnit 8/8, disparador de Pulse por REST 11/11, modo por categorías 13/13 y web/REST 6/6.
 
 ## Limitaciones conocidas
 
@@ -77,6 +91,7 @@ Pruebas del plugin:
   completarla mal. El motor servicio no tiene estos problemas.
 - Falta la copia de seguridad y restauración de la actividad.
 - Falta la interfaz de preguntas y respuestas para los alumnos (la parte de la IA).
+- Los vídeos enlazados desde fuera de Moodle (YouTube, Vimeo…) no se transcriben automáticamente.
 - Solo se ha probado con voz sintética, Wikipedia y documentales; faltan clases reales.
 
 ## Probarlo en local (Docker)

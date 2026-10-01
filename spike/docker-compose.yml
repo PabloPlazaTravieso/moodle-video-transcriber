@@ -31,6 +31,7 @@ services:
       - moodlecode:/var/www/html
       - "./config.php:/var/www/html/config.php:ro"
       - "../videoai:/var/www/html/mod/videoai"
+      - "../local_videotranscriber:/var/www/html/local/videotranscriber"
       - "./bench:/bench"
       - samplesdata:/samples
       # Whisper models for the FFmpeg whisper filter, and the comparison results folder.

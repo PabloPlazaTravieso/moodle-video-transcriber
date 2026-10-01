@@ -1,0 +1,8 @@
+  [PASS] report page loads (200)
+  [PASS] report lists 4 videos (3 transcribed + 1 skipped) (4)
+  [PASS] transcript view shows timed lines (1)
+  [PASS] course page links the report (1)
+  [PASS] student cannot open the report (1)
+  (student got HTTP 500)
+  [PASS] REST web service returns the course videos (4)
+  REST sample: "activityname":"Material extra" "activityname":"Tema 1: tutor\u00eda" "activityname":"Tema 2: API REST" 

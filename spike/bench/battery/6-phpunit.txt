@@ -1,0 +1,9 @@
+Moodle 4.5.12+ (Build: 20260708)
+Php: 8.3.32, pgsql: 16.15 (Debian 16.15-1.pgdg13+2), OS: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64
+PHPUnit 9.6.34 by Sebastian Bergmann and contributors.
+
+.......................................                           39 / 39 (100%)
+
+Time: 00:14.009, Memory: 344.00 MB
+
+OK (39 tests, 121 assertions)

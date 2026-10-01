@@ -1,0 +1,18 @@
+A. Before Pulse is active, nothing is transcribed
+  [PASS] course P1 inactive, its video not picked up — {"enabled":false,"source":"","videos":[{"file":"tts_02_tutoria_dos_voces.mp4","status":-1,"segments":0,"first":""
+B. Pulse activates course P1 (REST set_course_enabled)
+  [PASS] web service answers: enabled, 1 video queued — {"courseid":37,"enabled":true,"pluginenabled":true,"videosfound":1,"videosqueued":1}
+  [PASS] transcribed without the nightly task — 65s · {"enabled":true,"source":"webservice","videos":[{"file":"tts_02_tutoria_dos_voces.mp4","status":3,"segments":10,"
+C. Pulse asks for the transcripts of P2, where it was already active (auto-activation)
+  [PASS] request activates the course and queues its video — "inscope":true,"activated":true
+  [PASS] second request returns the transcript — "text":"[00:00:00] Bienvenidos a la sesi\u00f3n n\u00famero 3 del curso de des
+D. A teacher adds a new video to P1
+  [PASS] new video found and transcribed automatically — {"enabled":true,"source":"webservice","videos":[{"file":"tts_02_tutoria_dos_voces.mp4","status":3,"segments":10
+E. Pulse deactivates P1, then another video is added
+  [PASS] web service answers: disabled — {"courseid":37,"enabled":false,"pluginenabled":true,"videosfound":0,"videosqueued":0}
+  [PASS] new video not transcribed, earlier transcripts kept — {"enabled":false,"source":"webservice","videos":[{"file":"tts_02_tutoria_dos_voces.mp4","status":3,"segme
+F. Course P3, never touched by Pulse
+  [PASS] nothing transcribed — {"enabled":false,"source":"","videos":[{"file":"tts_01_clase_fotosintesis.mp4","status":-1,"segments":0,"first":""}]}
+G. A request with an invalid token is rejected
+  [PASS] invalid token rejected — {"exception":"core\\exception\\moodle_exception","errorcode":"invalidtoken","message":"Invalid token - token not found"}
+ALL PASSED

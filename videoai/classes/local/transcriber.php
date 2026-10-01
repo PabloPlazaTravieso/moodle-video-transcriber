@@ -181,6 +181,43 @@ class transcriber {
      * @throws moodle_exception
      */
     public static function transcribe_with_ffmpeg(stored_file $audio): array {
+        $workdir = make_temp_directory('mod_videoai/' . uniqid('', true));
+        try {
+            $wav = $workdir . '/audio.wav';
+            $audio->copy_content_to($wav);
+            return self::run_whisper_filter($wav);
+        } finally {
+            fulldelete($workdir);
+        }
+    }
+
+    /**
+     * Transcribe an audio file on disk with the configured engine, for callers outside this activity
+     * (e.g. local_videotranscriber, which transcribes videos found in courses).
+     *
+     * @param string $path Audio file, ideally the 16 kHz mono WAV produced by ffmpeg::extract_audio().
+     * @param string $filename Name sent to the external service.
+     * @return array{language: ?string, duration: ?float, model: string, segments: array} Segments already
+     *     cleaned with transcript::remove_hallucinations().
+     * @throws transcriber_unavailable_exception When the external service should be tried again later.
+     * @throws moodle_exception Any other failure.
+     */
+    public static function transcribe_audio_file(string $path, string $filename = 'audio.wav'): array {
+        $result = self::engine() === self::ENGINE_SERVICE
+            ? self::request_upload(new \CURLFile($path, 'audio/wav', $filename))
+            : self::run_whisper_filter($path);
+        $result['segments'] = transcript::remove_hallucinations($result['segments']);
+        return $result;
+    }
+
+    /**
+     * Run FFmpeg's whisper filter over a local audio file.
+     *
+     * @param string $wav
+     * @return array{language: ?string, duration: ?float, model: string, segments: array}
+     * @throws moodle_exception
+     */
+    protected static function run_whisper_filter(string $wav): array {
         $config = get_config('mod_videoai');
         $model = trim((string) ($config->whispermodel ?? ''));
         $vadmodel = trim((string) ($config->whispervadmodel ?? ''));
@@ -196,9 +233,7 @@ class transcriber {
 
         $workdir = make_temp_directory('mod_videoai/' . uniqid('', true));
         try {
-            $wav = $workdir . '/audio.wav';
             $srt = $workdir . '/transcript.srt';
-            $audio->copy_content_to($wav);
             $language = trim((string) ($config->language ?? ''));
             $ffmpeg->transcribe($wav, $srt, [
                 'model' => $model,
@@ -230,6 +265,18 @@ class transcriber {
      * @throws moodle_exception Any other failure.
      */
     public static function request(stored_file $audio): array {
+        return self::request_upload($audio);
+    }
+
+    /**
+     * POST an audio file to the service.
+     *
+     * @param stored_file|\CURLFile $file Moodle turns both into a multipart file upload.
+     * @return array{language: ?string, duration: ?float, model: string, segments: array}
+     * @throws transcriber_unavailable_exception Connection problems, timeouts and 5xx answers.
+     * @throws moodle_exception Any other failure.
+     */
+    protected static function request_upload(stored_file|\CURLFile $file): array {
         $config = get_config('mod_videoai');
         $url = rtrim(trim((string) $config->transcriberurl), '/') . '/transcribe';
 
@@ -239,7 +286,7 @@ class transcriber {
         if (!empty($config->transcriberkey)) {
             $curl->setHeader('Authorization: Bearer ' . $config->transcriberkey);
         }
-        $body = $curl->post($url, ['file' => $audio, 'language' => (string) ($config->language ?? '')], [
+        $body = $curl->post($url, ['file' => $file, 'language' => (string) ($config->language ?? '')], [
             'CURLOPT_CONNECTTIMEOUT' => 15,
             'CURLOPT_TIMEOUT' => (int) ($config->transcribertimeout ?? 7200) ?: 7200,
         ]);

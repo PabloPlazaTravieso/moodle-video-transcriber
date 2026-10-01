@@ -141,3 +141,45 @@ Pruebas: `bench/transcribe_e2e.php` con `ENGINE=ffmpeg`: 18/19 comprobaciones. P
 **Fallo conocido (no corregible desde el plugin):** tras 65 s de silencio y música, «Muy bien, ya ha pasado el tiempo.»
 aparece en el segundo 55 en lugar del 70: el tiempo puede adelantarse hasta un trozo tras música. Tampoco se puede
 evitar que, si el corte fijo cae en mitad de una frase, Whisper complete esa frase mal.
+
+## Séptima ronda: transcripción automática de los vídeos de los cursos (`local_videotranscriber` v0.1.0)
+
+Plugin local que reutiliza el motor de `mod_videoai`. Para poder usarlo desde fuera de la actividad, el motor ahora expone
+`transcriber::transcribe_audio_file()`. Una tarea nocturna busca en la tabla `files` los vídeos (`video/*`) de las zonas de
+material del curso de las categorías elegidas y los registra por `contenthash`, de modo que el mismo vídeo en varios cursos
+se transcribe una vez. Después encola un número limitado por noche y olvida los que se han borrado.
+
+- **PHPUnit:** 4 tests propios + comprobaciones del núcleo (39 en total con `mod_videoai`). Encontraron un fallo real:
+  `get_fieldset_sql()` ignora en silencio el límite, y se encolaban todos los vídeos en lugar de N.
+- **`bench/autotranscribe_e2e.php`:** 13/13. Estructura: categoría con subcategoría, Archivo, Página con vídeo incrustado,
+  Carpeta, una entrega de alumno (ignorada) y un curso fuera de alcance (ignorado). Comprueba la tutoría registrada una
+  sola vez para dos cursos, la segunda ejecución sin cambios, la sustitución de un vídeo (nuevo transcrito, viejo olvidado),
+  el borrado de una copia (la transcripción se mantiene) y la duración máxima (omitido con motivo).
+  Tres vídeos transcritos en 229 s con el motor FFmpeg.
+- **`bench/auto_http.sh`:** 6/6. Página del informe, transcripción, enlace en el curso, el alumno sin acceso y REST.
+
+**Batería completa repetida (01/10/2026, `bench/run_battery.sh`, resultados en `bench/battery/`):** formatos 8 + 2 errores
+esperados, separación 24/24, 12 muestras, transcripción con FFmpeg 18/19 (la limitación conocida), transcripción automática
+13/13, PHPUnit 39/39, web de la actividad 10/10 y web/REST de los cursos 6/6.
+
+Al repetirla, la transcripción automática dio 10/13, porque reutilizaba los vídeos de la ejecución anterior, que ya
+estaban transcritos (correcto: una transcripción por contenido en todo el sitio). Ahora la prueba re-empaqueta cada
+muestra con una etiqueta de metadatos por ejecución, para que su contenido sea nuevo.
+
+## Octava ronda: el disparador es Pulse (`local_videotranscriber` v0.2.0)
+
+Requisito: la transcripción debe empezar sola cuando Pulse, el chatbot que responde las preguntas, se activa en un curso,
+o automáticamente si Pulse ya está activo. Nuevo alcance por defecto, «Cursos donde Pulse está activo» (tabla
+`local_videotranscriber_crs`). Formas de activar un curso:
+- **`set_course_enabled`:** el servicio web nuevo que llama Pulse. Busca y encola los vídeos del curso en ese momento.
+- **`get_course_transcripts` en un curso no activo:** lo activa (ajuste `autoenable`), para el caso «Pulse ya estaba activo».
+- **Observadores** de `course_module_created/updated`, `course_section_updated` y `course_updated`: buscan los vídeos
+  nuevos de un curso activo con una tarea por curso, sin duplicados.
+
+Resultados:
+- **PHPUnit:** 44/44 entre los dos plugins, con 4 tests nuevos en `pulse_test`. Un aviso de Moodle obligó a quitar
+  `sql_like()` con una expresión en lugar de parámetro.
+- **`bench/pulse_e2e.sh`:** 11/11, llamando a REST desde fuera con una cuenta de servicio como la de Pulse y sin ejecutar
+  la tarea nocturna. Encontró un requisito real: la cuenta necesita `moodle/course:view`, porque sin estar matriculada
+  Moodle responde `requireloginerror`. Los tests de PHPUnit no lo detectaban porque usaban el administrador.
+- **Modo por categorías:** sigue en 13/13, y web/REST en 6/6.
