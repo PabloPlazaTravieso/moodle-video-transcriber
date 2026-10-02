@@ -156,7 +156,7 @@ class transcriber {
             $basename = preg_replace('/-audio$/', '', pathinfo($audio->get_filename(), PATHINFO_FILENAME)) . '-transcript';
             transcript::save($videoai, $context, $result['segments'], $basename, [
                 'language' => $result['language'],
-                'duration' => $result['duration'],
+                'duration' => $result['duration'] ?? ($videoai->duration !== null ? (float) $videoai->duration : null),
                 'model' => $result['model'],
             ]);
             self::set_status($videoai->id, self::STATUS_DONE, null, [

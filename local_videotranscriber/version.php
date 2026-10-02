@@ -25,9 +25,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_videotranscriber';
-$plugin->version   = 2026100101;
+$plugin->version   = 2026100200;
 $plugin->requires  = 2024100100; // Moodle 4.5.
 $plugin->maturity  = MATURITY_ALPHA;
-$plugin->release   = '0.2.0 (transcripción automática al activar Pulse en un curso)';
+$plugin->release   = '0.2.1 (mejoras de la página de transcripciones tras el QA)';
 // The audio separation and transcription engine (FFmpeg / Whisper settings) lives in mod_videoai.
-$plugin->dependencies = ['mod_videoai' => 2026093002];
+$plugin->dependencies = ['mod_videoai' => 2026100201];

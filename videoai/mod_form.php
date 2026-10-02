@@ -85,7 +85,7 @@ class mod_videoai_mod_form extends moodleform_mod {
         $draftfiles = get_file_storage()->get_area_files($usercontext->id, 'user', 'draft', $data['videofile'] ?? 0,
             'id', false);
         if (!$draftfiles) {
-            $errors['videofile'] = get_string('required');
+            $errors['videofile'] = get_string('videorequired', 'mod_videoai');
         }
         return $errors;
     }

@@ -51,8 +51,9 @@ if ($action !== '' && $canmanage) {
     require_sesskey();
     if ($action === 'enable') {
         $stats = pulse_courses::enable($course->id, pulse_courses::SOURCE_MANUAL);
-        redirect($url, get_string('pulseenabledmsg', 'local_videotranscriber', $stats['queued']), null,
-            \core\output\notification::NOTIFY_SUCCESS);
+        $message = $stats['queued'] ? get_string('pulseenabledmsg', 'local_videotranscriber', $stats['queued'])
+            : get_string('pulseenabledmsgnone', 'local_videotranscriber');
+        redirect($url, $message, null, \core\output\notification::NOTIFY_SUCCESS);
     }
     pulse_courses::disable($course->id, pulse_courses::SOURCE_MANUAL);
     redirect($url, get_string('pulsedisabledmsg', 'local_videotranscriber'), null, \core\output\notification::NOTIFY_INFO);
@@ -74,14 +75,20 @@ if (discovery::scope() === 'pulse') {
             'source' => get_string('source' . $pulse->source, 'local_videotranscriber')])
         : get_string('pulseinactive', 'local_videotranscriber');
     if ($canmanage) {
-        $text .= ' ' . html_writer::link(new moodle_url($url, ['pulse' => $active ? 'disable' : 'enable', 'sesskey' => sesskey()]),
-            get_string($active ? 'disablepulse' : 'enablepulse', 'local_videotranscriber'), ['class' => 'btn btn-secondary btn-sm ml-2 ms-2']);
+        $button = new single_button(new moodle_url($url, ['pulse' => $active ? 'disable' : 'enable']),
+            get_string($active ? 'disablepulse' : 'enablepulse', 'local_videotranscriber'), 'post');
+        $button->class .= ' d-inline-block ml-2 ms-2';
+        if ($active) {
+            $button->add_action(new confirm_action(get_string('disablepulseconfirm', 'local_videotranscriber')));
+        }
+        $text .= ' ' . $OUTPUT->render($button);
     }
     echo $OUTPUT->notification($text, $active ? 'success' : 'info', false);
 }
 if (!get_config('local_videotranscriber', 'enabled')) {
     echo $OUTPUT->notification(get_string('pluginoff', 'local_videotranscriber'), 'warning', false);
-} else if (!discovery::course_in_scope($course)) {
+} else if (discovery::scope() !== 'pulse' && !discovery::course_in_scope($course)) {
+    // In Pulse mode the notice above already says whether the course is transcribed.
     echo $OUTPUT->notification(get_string('notinscope', 'local_videotranscriber'), 'info');
 }
 $unregistered = count($locations) - count($registered);
@@ -96,6 +103,7 @@ if (!$registered) {
     $table = new html_table();
     $table->head = [get_string('where', 'local_videotranscriber'), get_string('status'),
         get_string('duration', 'local_videotranscriber'), get_string('timetranscribed', 'local_videotranscriber'), ''];
+    $table->colclasses = ['', '', 'text-nowrap', 'text-nowrap', 'text-nowrap'];
     foreach ($registered as $video) {
         $where = [];
         foreach ($locations[$video->contenthash] as $l) {
@@ -110,8 +118,9 @@ if (!$registered) {
         $action = (int) $video->status === videos::STATUS_DONE
             ? html_writer::link(new moodle_url($url, ['videoid' => $video->id]), get_string('showtranscript', 'local_videotranscriber'))
             : '';
-        $table->data[] = [implode('<br>', $where), $status, $video->duration ? format_time((int) round($video->duration)) : '-',
-            $video->timetranscribed ? userdate($video->timetranscribed) : '-', $action];
+        $table->data[] = [implode('<br>', $where), $status, $video->duration ? transcript::length((float) $video->duration) : '-',
+            $video->timetranscribed ? userdate($video->timetranscribed, get_string('strftimedatetimeshort', 'langconfig')) : '-',
+            $action];
     }
     echo html_writer::table($table);
 }
@@ -120,7 +129,12 @@ if (!$registered) {
 if ($videoid && ($video = $registered[$videoid] ?? null)) {
     echo $OUTPUT->heading(get_string('transcriptof', 'local_videotranscriber',
         s($locations[$video->contenthash][0]->filename)), 3);
-    echo html_writer::div(s($video->model) . ($video->language ? ' · ' . s($video->language) : ''), 'small text-muted mb-2');
+    // Engine details help whoever configures the site, not teachers.
+    $details = array_filter([has_capability('moodle/site:config', context_system::instance()) ? $video->model : '',
+        $video->language]);
+    if ($details) {
+        echo html_writer::div(s(implode(' · ', $details)), 'small text-muted mb-2');
+    }
     $lines = '';
     foreach (videos::get_segments($video->id) as $segment) {
         $lines .= html_writer::tag('p', html_writer::span(transcript::clock($segment['start']),

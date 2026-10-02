@@ -220,4 +220,19 @@ class transcript {
         $time = sprintf('%02d:%02d:%02d', intdiv($ms, 3600000), intdiv($ms, 60000) % 60, intdiv($ms, 1000) % 60);
         return $millis ? sprintf('%s.%03d', $time, $ms % 1000) : $time;
     }
+
+    /**
+     * Format a video length as a player shows it: M:SS, or H:MM:SS from one hour.
+     *
+     * Used instead of format_time(), whose strings some language packs do not inflect ("1 minutos").
+     *
+     * @param float $seconds
+     * @return string
+     */
+    public static function length(float $seconds): string {
+        $s = (int) round(max(0, $seconds));
+        return $s >= 3600
+            ? sprintf('%d:%02d:%02d', intdiv($s, 3600), intdiv($s, 60) % 60, $s % 60)
+            : sprintf('%d:%02d', intdiv($s, 60), $s % 60);
+    }
 }

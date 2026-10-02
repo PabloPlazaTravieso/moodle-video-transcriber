@@ -35,6 +35,13 @@ final class transcript_test extends \advanced_testcase {
         $this->assertSame('00:00:00.000', transcript::clock(-1, true));
     }
 
+    public function test_length(): void {
+        $this->assertSame('0:07', transcript::length(6.6));
+        $this->assertSame('1:26', transcript::length(85.76));
+        $this->assertSame('59:59', transcript::length(3599.4));
+        $this->assertSame('1:02:03', transcript::length(3723));
+    }
+
     public function test_to_vtt(): void {
         $vtt = transcript::to_vtt([
             ['start' => 0.5, 'end' => 2.25, 'text' => 'Buenos días.'],

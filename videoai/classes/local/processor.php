@@ -115,6 +115,44 @@ class processor {
     }
 
     /**
+     * Called after an activity is restored from a backup: requeue the work the backup did not finish.
+     *
+     * A backup taken while a task was queued or running holds that transient status, and a backup made
+     * without files has none of the outputs the status claims. Up-to-date outputs are kept as restored.
+     *
+     * @param int $videoaiid Restored activity instance id.
+     * @param context_module $context Its module context.
+     */
+    public static function restored(int $videoaiid, context_module $context): void {
+        global $DB;
+        $videoai = $DB->get_record('videoai', ['id' => $videoaiid], '*', MUST_EXIST);
+        $file = self::get_video_file($context);
+        if (!$file) {
+            self::clear_outputs($context);
+            self::clear_transcript($videoaiid, $context);
+            self::set_status($videoaiid, self::STATUS_NOVIDEO, null, ['videohash' => null, 'duration' => null]);
+            return;
+        }
+        $separated = (int) $videoai->status === self::STATUS_DONE && $videoai->videohash === $file->get_contenthash()
+            && self::get_area_file($context, 'audio');
+        if (!$separated) {
+            if ((int) $videoai->status !== self::STATUS_ERROR || $videoai->videohash !== $file->get_contenthash()) {
+                // Processing queues the transcription when it is done.
+                self::queue($videoaiid, true);
+            }
+            return;
+        }
+        $transcribed = (int) $videoai->transcriptstatus === transcriber::STATUS_DONE
+            && $DB->record_exists('videoai_segments', ['videoaiid' => $videoaiid]);
+        if (!$transcribed && in_array((int) $videoai->transcriptstatus,
+                [transcriber::STATUS_QUEUED, transcriber::STATUS_PROCESSING, transcriber::STATUS_DONE], true)) {
+            // Reset first: queue() does nothing when transcription is disabled on this site.
+            transcriber::set_status($videoaiid, transcriber::STATUS_NONE);
+            transcriber::queue($videoaiid);
+        }
+    }
+
+    /**
      * Queue the adhoc task that processes an activity.
      *
      * @param int $videoaiid Activity instance id.

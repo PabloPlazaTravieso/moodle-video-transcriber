@@ -25,9 +25,9 @@
     * statuslabel, statusclass, iserror, statusmessage - Processing status.
     * duration, timeprocessed - Formatted metadata, may be null.
     * audio, videoonly - {url, filename, size} of each output, or null.
-    * canreprocess, reprocessurl - Reprocess button.
+    * reprocessbutton - HTML of the reprocess button (asks for confirmation), or null.
     * transcript - Transcript panel or null: enabled, statuslabel, statusclass, iserror, message, language, model,
-      timetranscribed, segments [{time, text}], empty, downloads [{url, filename}], canretranscribe, retranscribeurl.
+      timetranscribed, segments [{time, text}], empty, downloads [{url, filename}], retranscribebutton (HTML or null).
 
     Example context (json):
     {
@@ -41,12 +41,11 @@
         "timeprocessed": "Wednesday, 30 September 2026, 10:00 AM",
         "audio": {"url": "#", "filename": "class-audio.wav", "size": "22.1 MB"},
         "videoonly": {"url": "#", "filename": "class-video.mp4", "size": "80 MB"},
-        "canreprocess": true,
-        "reprocessurl": "#",
+        "reprocessbutton": "<button class=\"btn btn-secondary\">Process again</button>",
         "transcript": {"enabled": true, "statuslabel": "Processed", "statusclass": "success", "language": "es",
             "timetranscribed": "Wednesday, 30 September 2026, 11:00 AM", "model": "faster-whisper large-v3-turbo int8",
             "segments": [{"time": "00:00:00", "text": "Buenos días a todos."}],
-            "downloads": [{"url": "#", "filename": "class-transcript.vtt"}], "canretranscribe": true, "retranscribeurl": "#"}
+            "downloads": [{"url": "#", "filename": "class-transcript.vtt"}], "retranscribebutton": "<button class=\"btn btn-secondary\">Transcribe again</button>"}
     }
 }}
 <div class="mod_videoai">
@@ -92,9 +91,9 @@
                     <p><a href="{{url}}?forcedownload=1">{{filename}}</a> <span class="text-muted">({{size}})</span></p>
                 {{/videoonly}}
 
-                {{#canreprocess}}
-                    <a class="btn btn-secondary" href="{{reprocessurl}}">{{#str}}reprocess, mod_videoai{{/str}}</a>
-                {{/canreprocess}}
+                {{#reprocessbutton}}
+                    {{{reprocessbutton}}}
+                {{/reprocessbutton}}
             </div>
         </section>
     {{/canprocess}}
@@ -140,9 +139,9 @@
                     <a class="btn btn-link px-0 mr-3 me-3" href="{{url}}">{{#str}}transcriptdownload, mod_videoai, {{filename}}{{/str}}</a>
                 {{/downloads}}
 
-                {{#canretranscribe}}
-                    <div><a class="btn btn-secondary" href="{{retranscribeurl}}">{{#str}}retranscribe, mod_videoai{{/str}}</a></div>
-                {{/canretranscribe}}
+                {{#retranscribebutton}}
+                    <div>{{{retranscribebutton}}}</div>
+                {{/retranscribebutton}}
             </div>
         </section>
     {{/transcript}}

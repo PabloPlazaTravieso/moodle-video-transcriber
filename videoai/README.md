@@ -106,6 +106,13 @@ El audio de las clases se envía al servicio de transcripción configurado. Inst
 el servicio no guarda nada, trabaja con un archivo temporal que se borra al terminar. El plugin no almacena datos
 personales de los usuarios (proveedor de privacidad nulo), pero la transcripción contiene lo que se dice en el vídeo.
 
+## Copia de seguridad y restauración
+
+Las copias de seguridad del curso, la importación y «Duplicar» incluyen la actividad completa: el vídeo, el audio
+separado, la transcripción y sus segmentos con tiempos. La copia restaurada no vuelve a transcribir nada. Si la copia
+se hizo mientras un vídeo se procesaba, al restaurarla se vuelve a poner en cola lo que faltaba. Si el vídeo no se
+restaura (copia sin archivos llevada a otro sitio), la actividad queda sin vídeo y sin transcripción.
+
 ## Limitaciones conocidas
 
 - Motor FFmpeg: el filtro corta el audio en trozos fijos de 25 s sin solaparlos. Si el corte cae en mitad de una frase,
@@ -115,6 +122,5 @@ personales de los usuarios (proveedor de privacidad nulo), pero la transcripció
 - Motor FFmpeg: una hora de clase tarda aproximadamente una hora en 8 hilos de CPU y usa la CPU del servidor de Moodle.
   Baja «Hilos de CPU» si afecta a los usuarios.
 
-- Sin copia de seguridad/restauración todavía (`FEATURE_BACKUP_MOODLE2` desactivado).
 - El tamaño máximo del vídeo lo limitan `upload_max_filesize` / `post_max_size` de PHP y el máximo del curso.
 - El WAV ocupa unos 115 MB por hora de vídeo. En CPU la transcripción tarda aproximadamente la mitad de la duración del vídeo.

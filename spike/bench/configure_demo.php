@@ -30,7 +30,20 @@ if (is_dir($CFG->dataroot . '/lang/es')) {
 }
 echo "Plugin settings applied (engine: FFmpeg + Whisper, scope: courses where Pulse is active).\n";
 
-if ($DB->record_exists('course', ['shortname' => 'demopulse'])) {
+/**
+ * Name the sections of the demo course (also on courses created before the names were added).
+ */
+function name_sections(int $courseid): void {
+    $names = [1 => 'Tema 1: el trabajo final', 2 => 'Tema 2: desarrollo web', 3 => 'Material extra'];
+    foreach (get_fast_modinfo($courseid)->get_section_info_all() as $section) {
+        if (isset($names[$section->section]) && $section->name === null) {
+            course_update_section($courseid, $section, ['name' => $names[$section->section]]);
+        }
+    }
+}
+
+if ($courseid = $DB->get_field('course', 'id', ['shortname' => 'demopulse'])) {
+    name_sections($courseid);
     echo "Demo course already exists.\n";
     exit(0);
 }
@@ -78,4 +91,5 @@ add_moduleinfo((object) ['modulename' => 'videoai', 'module' => $DB->get_field('
     'introformat' => FORMAT_HTML, 'cmidnumber' => '', 'videofile' => draft(fresh('tts_01_clase_fotosintesis'), 'fotosintesis.mp4')],
     $course);
 // Files added directly (Page, Folder) queued discovery tasks; with Pulse not active they do nothing.
+name_sections($course->id);
 echo "Demo course created.\n";

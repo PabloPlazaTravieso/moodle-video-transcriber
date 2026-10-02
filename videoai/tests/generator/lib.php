@@ -15,17 +15,16 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for mod_videoai.
+ * Data generator for mod_videoai.
  *
  * @package    mod_videoai
+ * @category   test
  * @copyright  2026 Awakelab
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->component = 'mod_videoai';
-$plugin->version   = 2026100201;
-$plugin->requires  = 2024100100; // Moodle 4.5.
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->release   = '0.4.0 (copia de seguridad y restauración, mejoras tras el QA)';
+/**
+ * Creates Video Transcriber activities; pass 'videofile' (a draft item id) to upload a video.
+ */
+class mod_videoai_generator extends testing_module_generator {
+}

@@ -85,6 +85,20 @@ $fileurl = function(?stored_file $file, int $revision = 0): ?moodle_url {
         $revision, $file->get_filepath(), $file->get_filename());
 };
 
+/**
+ * A button that asks for confirmation before queueing work again.
+ *
+ * @param string $action
+ * @param string $label Language string of the button.
+ * @param string $confirm Language string of the question.
+ * @return string HTML.
+ */
+$actionbutton = function(string $action, string $label, string $confirm) use ($OUTPUT, $url): string {
+    $button = new single_button(new moodle_url($url, ['action' => $action]), get_string($label, 'mod_videoai'), 'post');
+    $button->add_action(new confirm_action(get_string($confirm, 'mod_videoai')));
+    return $OUTPUT->render($button);
+};
+
 $templatedata = ['videohtml' => null, 'canprocess' => $canprocess];
 
 $video = processor::get_video_file($context);
@@ -113,7 +127,7 @@ if ($canprocess) {
         'statusclass' => $statusclass,
         'iserror' => $status === processor::STATUS_ERROR,
         'statusmessage' => $videoai->statusmessage,
-        'duration' => $videoai->duration !== null ? format_time((int) round($videoai->duration)) : null,
+        'duration' => $videoai->duration !== null ? transcript::length((float) $videoai->duration) : null,
         'timeprocessed' => $videoai->timeprocessed ? userdate($videoai->timeprocessed) : null,
         'audio' => $audio ? [
             'url' => $fileurl($audio, $revision)->out(false),
@@ -125,8 +139,7 @@ if ($canprocess) {
             'filename' => $videoonly->get_filename(),
             'size' => display_size($videoonly->get_filesize()),
         ] : null,
-        'canreprocess' => $video && !$working,
-        'reprocessurl' => (new moodle_url($url, ['action' => 'reprocess', 'sesskey' => sesskey()]))->out(false),
+        'reprocessbutton' => $video && !$working ? $actionbutton('reprocess', 'reprocess', 'reprocessconfirm') : null,
     ];
 }
 
@@ -139,9 +152,11 @@ if ($cantranscript || $canprocess) {
         transcriber::STATUS_ERROR => ['statuserror', 'danger'],
     ];
     [$tkey, $tclass] = $tstatuskeys[$tstatus] ?? $tstatuskeys[transcriber::STATUS_NONE];
-    $segments = $cantranscript && $tstatus === transcriber::STATUS_DONE ? transcript::get_segments($videoai->id) : [];
+    $tdone = $tstatus === transcriber::STATUS_DONE;
+    $segments = $cantranscript && $tdone ? transcript::get_segments($videoai->id) : [];
     $downloads = [];
-    if ($cantranscript) {
+    // While a new transcription is queued or running, the previous files and date no longer describe what is shown.
+    if ($cantranscript && $tdone) {
         foreach (get_file_storage()->get_area_files($context->id, processor::COMPONENT, transcript::FILEAREA, 0,
                 'filename', false) as $file) {
             $downloads[] = [
@@ -157,16 +172,18 @@ if ($cantranscript || $canprocess) {
         'iserror' => $tstatus === transcriber::STATUS_ERROR,
         'message' => $videoai->transcriptmessage,
         'language' => $videoai->transcriptlanguage,
-        'model' => $videoai->transcriptmodel,
-        'timetranscribed' => $videoai->timetranscribed ? userdate($videoai->timetranscribed) : null,
+        // Engine details help whoever configures the site, not teachers.
+        'model' => $tdone && has_capability('moodle/site:config', context_system::instance()) ? $videoai->transcriptmodel : null,
+        'timetranscribed' => $tdone && $videoai->timetranscribed ? userdate($videoai->timetranscribed) : null,
         'cantranscript' => $cantranscript,
         'segments' => array_map(fn($seg) => ['time' => transcript::clock($seg['start']), 'text' => $seg['text']],
             $segments),
-        'empty' => $cantranscript && $tstatus === transcriber::STATUS_DONE && !$segments,
+        'empty' => $cantranscript && $tdone && !$segments,
         'downloads' => $downloads,
-        'canretranscribe' => $canprocess && transcriber::is_enabled() && !$tworking
-            && processor::get_area_file($context, 'audio'),
-        'retranscribeurl' => (new moodle_url($url, ['action' => 'retranscribe', 'sesskey' => sesskey()]))->out(false),
+        // Not while the audio is being separated again: the transcription would use the old audio.
+        'retranscribebutton' => $canprocess && transcriber::is_enabled() && !$tworking && !$working
+            && processor::get_area_file($context, 'audio')
+            ? $actionbutton('retranscribe', 'retranscribe', 'retranscribeconfirm') : null,
     ];
 }
 

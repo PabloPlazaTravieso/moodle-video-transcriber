@@ -79,7 +79,7 @@ Detalle completo en [`spike/asr/RESULTADOS.md`](spike/asr/RESULTADOS.md).
 El «error» es el porcentaje de palabras mal transcritas. En voz real está inflado porque la referencia es aproximada.
 
 Pruebas del plugin:
-- tests automáticos (PHPUnit): 24/24;
+- tests automáticos (PHPUnit): 50/50 entre los dos plugins, 6 de ellos de copia de seguridad y restauración;
 - separación de principio a fin: 24/24;
 - transcripción de principio a fin: 22/22 con el servicio y 18/19 con FFmpeg (ver limitaciones);
 - transcripción automática de los cursos: PHPUnit 8/8, disparador de Pulse por REST 11/11, modo por categorías 13/13 y web/REST 6/6.
@@ -89,7 +89,6 @@ Pruebas del plugin:
 - **Motor FFmpeg:** corta el audio en trozos fijos de 25 s. Tras un silencio largo con música, el tiempo de la frase
   siguiente puede adelantarse (en las pruebas, del segundo 70 al 55). Si un corte cae en mitad de una frase, puede
   completarla mal. El motor servicio no tiene estos problemas.
-- Falta la copia de seguridad y restauración de la actividad.
 - Falta la interfaz de preguntas y respuestas para los alumnos (la parte de la IA).
 - Los vídeos enlazados desde fuera de Moodle (YouTube, Vimeo…) no se transcriben automáticamente.
 - Solo se ha probado con voz sintética, Wikipedia y documentales; faltan clases reales.
